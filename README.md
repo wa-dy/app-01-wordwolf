@@ -92,10 +92,10 @@ original-wordwolftool-app/
 ## 起動方法
 
 GitHub Pages：  
-🔗 https://daichi-ym.github.io/original-wordwolftool-app/  
+🔗 https://wa-dy.github.io/app-01-wordwolf/  
 
-または → [みんなのワードウルフをプレイする](https://daichi-ym.github.io/original-wordwolftool-app/)
+または → [みんなのワードウルフをプレイする](https://wa-dy.github.io/app-01-wordwolf/)
 
 
 ## ライセンス
-本プロジェクトは [MIT License](LICENSE) のもとで公開しています。
+本プロジェクトは [MIT License](LICENSE.md) のもとで公開しています。
