@@ -1206,20 +1206,20 @@ function playerMarge() {
 
 // スコアアイコンの追加
 function addScoreIcon(player, listItem) {
-  const plusSpan = document.createElement('span');
-  plusSpan.className = 'game-result-screen__score-plus';
-  plusSpan.textContent = `WIN`;
+  const winSpan = document.createElement('span');
+  winSpan.className = 'game-result-screen__score-win';
+  winSpan.textContent = `WIN`;
 
   if (gameState.isWolfWinner) {
     if (player.index === gameState.wolfIndex) {
       // ウルフが勝利かつ自身がウルフの場合
-      listItem.appendChild(plusSpan);
+      listItem.appendChild(winSpan);
     }
   } else {
     if (player.index !== gameState.wolfIndex) {
       if (player.votedIndex === gameState.wolfIndex) {
         // ウルフが敗北かつ自身が村人かつウルフに投票していた場合
-        listItem.appendChild(plusSpan);
+        listItem.appendChild(winSpan);
       }
     }
   }
