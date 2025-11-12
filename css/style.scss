@@ -79,6 +79,10 @@ $mq-breakpoints: (
 //  Animations
 // ======================================== */
 
+$ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+$ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+$ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+
 // 下からフェードイン
 @-webkit-keyframes fadeIn-bottom {
   from {
@@ -150,17 +154,8 @@ ul {
 }
 
 /* ===========================================
-//  Components
-// ======================================== */
-
-
-
-/* ===========================================
 //  Word Wolf
 // ======================================== */
-
-$screen-bg-color: $color-background-1;
-$screen-animation-duration: 0.3s;
 
 .word-wolf {
   &-container {
@@ -183,8 +178,10 @@ $screen-animation-duration: 0.3s;
 
 /* 表示画面 */
 .screen {
+  $duration: 1.4s;
+
   display: none;
-  background: $screen-bg-color;
+  background: $color-background-1;
   border-radius: $border-radius-screen;
   padding: 48px 32px 64px;
   box-shadow: $shadow-high;
@@ -193,18 +190,20 @@ $screen-animation-duration: 0.3s;
     flex: 1;
     display: flex;
     flex-direction: column;
-    animation: fadeIn-bottom $screen-animation-duration ease-out,
+    animation: fadeIn-bottom $duration $ease-out-expo,
   }
 }
 
 .modal-mask {
+  $duration: 1.4s;
+
   opacity: 0;
   pointer-events: none;
   position: fixed;
   inset: 0;
   background: rgba($color: #000, $alpha: 0.7);
-  z-index: 10;
-  transition: opacity 0.3s ease-out;
+  z-index: 1;
+  transition: opacity $duration $ease-out-expo;
 
   &--active {
     opacity: 1;
@@ -229,7 +228,7 @@ $screen-animation-duration: 0.3s;
 
     &--active {
       pointer-events: auto;
-      animation: roundCountAnimation 2s ease-in-out;
+      animation: roundCountAnimation 2s $ease-out-expo;
     }
   }
 }
@@ -360,6 +359,8 @@ $btn-accent-bg-hover-color: darken($color-accent-1, 10%);
   z-index: 100;
 
   &__modal {
+    $duration: 0.7s;
+
     @include content-box;
     box-shadow: $shadow-high;
     position: absolute;
@@ -368,8 +369,8 @@ $btn-accent-bg-hover-color: darken($color-accent-1, 10%);
     pointer-events: none;
     transform: translateX(-10px);
     transition:
-      opacity 0.3s ease,
-      transform 0.3s ease;
+      opacity $duration $ease-out-expo,
+      transform $duration $ease-out-expo;
     z-index: 1;
 
     &--active {
@@ -401,7 +402,7 @@ $btn-accent-bg-hover-color: darken($color-accent-1, 10%);
       position: fixed;
       inset: 0;
       background: rgba($color: #000, $alpha: 0.3);
-      transition: opacity 0.3s ease-out;
+      transition: opacity $duration $ease-out-expo;
 
       &--active {
         opacity: 1;
@@ -470,12 +471,16 @@ $setup-screen-form-toggle-border-radius: calc($setup-screen-form-toggle-height /
     }
 
     &-input {
+      $duration: 1.4s;
+
       width: 100%;
       padding: 12px 16px;
       border: $border-item;
       border-radius: $border-radius-item;
       background: $color-background-item;
-      transition: border-color 0.3s ease;
+      transition:
+        border-color $duration $ease-out-expo,
+        box-shadow $duration $ease-out-expo;
 
       &:focus {
         outline: none;
@@ -614,12 +619,16 @@ $setup-screen-form-toggle-border-radius: calc($setup-screen-form-toggle-height /
     }
 
     &-input {
+      $duration: 1.4s;
+
       width: 100%;
       padding: 12px 16px;
       border: $border-item;
       border-radius: $border-radius-item;
       background: $color-background-item;
-      transition: border-color 0.3s ease;
+      transition:
+        border-color $duration $ease-out-expo,
+        box-shadow $duration $ease-out-expo;
 
       &:focus {
         outline: none;
@@ -664,6 +673,8 @@ $word-distribution-modal-animation-duration: 0.5s;
   }
 
   &__modal {
+    $duration: 1.4s;
+    
     @include content-box;
     box-shadow: $shadow-high;
     position: absolute;
@@ -672,7 +683,9 @@ $word-distribution-modal-animation-duration: 0.5s;
     opacity: 0;
     pointer-events: none;
     transform: translateX(-10px);
-    transition: all 0.3s ease-out;
+    transition:
+      transform $duration $ease-out-expo,
+      opacity $duration $ease-out-expo;
 
     &--active {
       opacity: 1;
@@ -801,6 +814,8 @@ $vote-screen-modal-animation-duration: 0.5s;
   position: relative;
 
   &__modal {
+    $duration: 1.4s;
+
     @include content-box;
     box-shadow: $shadow-high;
     position: absolute;
@@ -809,7 +824,9 @@ $vote-screen-modal-animation-duration: 0.5s;
     opacity: 0;
     pointer-events: none;
     transform: translateX(-10px);
-    transition: all 0.3s ease-out;
+    transition:
+      transform $duration $ease-out-expo,
+      opacity $duration $ease-out-expo;
 
     &--active {
       opacity: 1;
@@ -832,13 +849,18 @@ $vote-screen-modal-animation-duration: 0.5s;
   }
 
   &__option-item {
+    $duration: 0.7s;
+
     background: $color-background-item;
     border-radius: $border-radius-item;
     padding: 12px;
     cursor: pointer;
     box-shadow: $shadow-low;
     font-weight: 700;
-    transition: all 0.3s ease;
+    transition: 
+      background-color $duration $ease-out-expo,
+      color $duration $ease-out-expo,
+      box-shadow $duration $ease-out-expo;
 
     &--selected {
       background: $color-primary-1;
@@ -932,12 +954,16 @@ $vote-screen-modal-animation-duration: 0.5s;
     }
 
     &-input {
+      $duration: 1.4s;
+
       width: 100%;
       padding: 12px 16px;
       border: $border-item;
       border-radius: $border-radius-item;
       background: $color-background-item;
-      transition: border-color 0.3s ease;
+      transition:
+        border-color $duration $ease-out-expo,
+        box-shadow $duration $ease-out-expo;
 
       &:focus {
         outline: none;

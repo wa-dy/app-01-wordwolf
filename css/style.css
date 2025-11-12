@@ -75,9 +75,6 @@ ul {
 }
 
 /* ===========================================
-//  Components
-// ======================================== */
-/* ===========================================
 //  Word Wolf
 // ======================================== */
 .word-wolf-container {
@@ -108,8 +105,8 @@ ul {
   flex: 1;
   display: flex;
   flex-direction: column;
-  -webkit-animation: fadeIn-bottom 0.3s ease-out;
-          animation: fadeIn-bottom 0.3s ease-out;
+  -webkit-animation: fadeIn-bottom 1.4s cubic-bezier(0.16, 1, 0.3, 1);
+          animation: fadeIn-bottom 1.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .modal-mask {
@@ -118,8 +115,8 @@ ul {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.7);
-  z-index: 10;
-  transition: opacity 0.3s ease-out;
+  z-index: 1;
+  transition: opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .modal-mask--active {
   opacity: 1;
@@ -143,8 +140,8 @@ ul {
 }
 .modal-mask__round-count--active {
   pointer-events: auto;
-  -webkit-animation: roundCountAnimation 2s ease-in-out;
-          animation: roundCountAnimation 2s ease-in-out;
+  -webkit-animation: roundCountAnimation 2s cubic-bezier(0.16, 1, 0.3, 1);
+          animation: roundCountAnimation 2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* ===========================================
@@ -254,7 +251,7 @@ ul {
   opacity: 0;
   pointer-events: none;
   transform: translateX(-10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 1;
 }
 .help-screen__modal--active {
@@ -282,7 +279,7 @@ ul {
   position: fixed;
   inset: 0;
   background: rgba(0, 0, 0, 0.3);
-  transition: opacity 0.3s ease-out;
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .help-screen__modal-mask--active {
   opacity: 1;
@@ -340,7 +337,7 @@ ul {
   border: 2px solid #ccc;
   border-radius: 8px;
   background: #fff;
-  transition: border-color 0.3s ease;
+  transition: border-color 1.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 1.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .setup-screen__form-input:focus {
   outline: none;
@@ -455,7 +452,7 @@ ul {
   border: 2px solid #ccc;
   border-radius: 8px;
   background: #fff;
-  transition: border-color 0.3s ease;
+  transition: border-color 1.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 1.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .word-set-screen__form-input:focus {
   outline: none;
@@ -502,7 +499,7 @@ ul {
   opacity: 0;
   pointer-events: none;
   transform: translateX(-10px);
-  transition: all 0.3s ease-out;
+  transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .word-distribution-screen__modal--active {
   opacity: 1;
@@ -621,7 +618,7 @@ ul {
   opacity: 0;
   pointer-events: none;
   transform: translateX(-10px);
-  transition: all 0.3s ease-out;
+  transition: transform 1.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .vote-screen__modal--active {
   opacity: 1;
@@ -646,7 +643,7 @@ ul {
   cursor: pointer;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
   font-weight: 700;
-  transition: all 0.3s ease;
+  transition: background-color 0.7s cubic-bezier(0.16, 1, 0.3, 1), color 0.7s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .vote-screen__option-item--selected {
   background: #3498db;
@@ -728,7 +725,7 @@ ul {
   border: 2px solid #ccc;
   border-radius: 8px;
   background: #fff;
-  transition: border-color 0.3s ease;
+  transition: border-color 1.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 1.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .wolf-chance-screen__form-input:focus {
   outline: none;
