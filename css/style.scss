@@ -7,20 +7,20 @@ $font-family-title: 'Yusei Magic', sans-serif;
 $font-family-round-count: 'Yusei Magic', sans-serif;
 $font-family-timer: "DotGothic16", sans-serif;
 
-$color-primary-1: #3498db; // メインカラー
-$color-primary-2: #e8f4fd; // メインカラーのライト
+$color-primary-1: #3498db; // プライマリーカラー
+$color-primary-2: #e8f4fd;
 $color-accent-1: #e74c3c; // アクセントカラー
-$color-accent-2: #f8d7da; // アクセントカラーのライト
-$color-subtle-1: #888;
-$color-subtle-2: #ccc;
+$color-accent-2: #f8d7da;
+$color-subtle-1: #8da0b5; // #888
+$color-subtle-2: #bfcfdd; // #ccc
 $color-text-title: #2c3e50; // タイトルメインカラー
 $color-text-1: #2c3e50; // デフォルトのテキストカラー
 $color-text-2: #8da0b5;
 $color-text-3: #bfcfdd;
-$color-text-4: #fff; // デフォルトのテキストカラー
+$color-text-4: #fff;
 $color-background-1: #fff; // デフォルトの背景色
-$color-background-body: #eee; // スクリーン背面の背景色
-$color-background-content: #f8f9fa; // コンテンツ背景色
+$color-background-body: #f8f8f8; // スクリーン背面の背景色
+$color-background-content: #f8f8f8; // コンテンツ背景色
 $color-background-item: #fff; // コンテンツアイテム背景色
 
 $font-size-title: 3.2rem;
@@ -36,6 +36,8 @@ $font-size-timer: 4rem;
 $font-size-trophy: 2.4rem;
 $font-size-copyright: 1.2rem;
 
+$max-width-screen: 768px;
+
 $border-item: 2px solid $color-subtle-2;
 
 $border-radius-screen: 16px;
@@ -46,7 +48,7 @@ $border-radius-sub-item: 6px;
 $shadow-low: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24); // 影の低め
 $shadow-high: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23); // 影の高め
 
-//ブレイクポイント変数設定
+// ブレイクポイント変数設定
 $mq-breakpoints: (
   "sm": 576px,
   "md": 768px,
@@ -67,12 +69,21 @@ $mq-breakpoints: (
   }
 }
 
-// コンテンツボックス
+@mixin section-content($width-margin: 0) {
+  max-width: $max-width-screen - $width-margin;
+  margin: 0 auto;
+}
+
 @mixin content-box {
   background: $color-background-content;
   border-radius: $border-radius-content;
   padding: 32px 16px;
   border-left: 4px solid $color-primary-1;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
 }
 
 /* ===========================================
@@ -87,7 +98,7 @@ $ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
 @-webkit-keyframes fadeIn-bottom {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(24px);
   }
 
   to {
@@ -99,26 +110,12 @@ $ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
 @keyframes fadeIn-bottom {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(24px);
   }
 
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes roundCountAnimation {
-  0% {
-    opacity: 0;
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 1;
   }
 }
 
@@ -153,90 +150,57 @@ ul {
   list-style: none;
 }
 
-/* ===========================================
-//  Word Wolf
-// ======================================== */
+// ===========================================
+//  Component
+// ===========================================
 
-.word-wolf {
-  &-container {
-  max-width: 768px;
-  margin: 0 auto;
-  padding: 12px;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  position: relative;
-  }
-
-  &-content {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-}
-
-/* 表示画面 */
+// 表示画面
 .screen {
   $duration: 1.4s;
 
   display: none;
   background: $color-background-1;
   border-radius: $border-radius-screen;
-  padding: 48px 32px 64px;
+  padding: 64px 32px;
   box-shadow: $shadow-high;
 
-  &--active {
+  &.is-active {
     flex: 1;
     display: flex;
     flex-direction: column;
     animation: fadeIn-bottom $duration $ease-out-expo,
   }
-}
 
-.modal-mask {
-  $duration: 1.4s;
-
-  opacity: 0;
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  background: rgba($color: #000, $alpha: 0.7);
-  z-index: 1;
-  transition: opacity $duration $ease-out-expo;
-
-  &--active {
-    opacity: 1;
-    pointer-events: auto;
+  &__inner {
+    @include flex-column();
+    gap: 32px;
   }
 
-  &__round-count {
-    opacity: 0;
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%;
-    text-align: center;
-    z-index: 10;
-    font-size: $font-size-round-count;
-    font-weight: 700;
-    font-family: $font-family-round-count;
-    letter-spacing: .1em;
-    color: $color-text-4;
-    text-shadow: $shadow-high;
-
-    &--active {
-      pointer-events: auto;
-      animation: roundCountAnimation 2s $ease-out-expo;
-    }
+  &__content {
+    @include flex-column();
+    gap: 24px;
   }
 }
 
-/* ===========================================
-//  タイトル
-// ======================================== */
+.modal-content {
+  @include flex-column();
+  gap: 24px;
+  height: 100%
+}
 
+.item-list {
+  @include flex-column();
+  gap: 12px;
+}
+
+.content-item {
+  @include content-box();
+  @include flex-column();
+  gap: 16px;
+  box-shadow: $shadow-low;
+}
+
+// タイトル
 .title {
   text-align: center;
   font-weight: 700;
@@ -245,285 +209,264 @@ ul {
     font-size: $font-size-title;
     font-family: $font-family-title;
     color: $color-text-title;
-    margin: 48px 0;
   }
 
   &--section {
     font-size: $font-size-heading-m;
-    margin-bottom: 32px;
   }
 
   &--content {
     font-size: $font-size-heading-s;
-    margin-bottom: 16px;
   }
 }
 
-/* ===========================================
-//  ボタン
-// ======================================== */
-
-$btn-secondary-color: #95a5a6;
-
-$btn-primary-font-color: $color-text-4;
-$btn-primary-bg-color: $color-primary-1;
-$btn-primary-bg-hover-color: darken($color-primary-1, 10%);
-
-$btn-secondary-font-color: $color-text-4;
-$btn-secondary-bg-color: $btn-secondary-color;
-$btn-secondary-bg-hover-color: darken($btn-secondary-color, 10%);
-
-$btn-accent-font-color: $color-text-4;
-$btn-accent-bg-color: $color-accent-1;
-$btn-accent-bg-hover-color: darken($color-accent-1, 10%);
-
-// ボタン無効化
-@mixin btn-disabled {
-  background: $color-subtle-2;
-  color: $color-subtle-1;
-  cursor: not-allowed;
-  box-shadow: none;
-  transform: none;
-}
-
-// ボタンホバー
-@mixin btn-hover {
-  transform: scale(1.02);
-  box-shadow: $shadow-high;
-}
-
+// ボタン
 .btn {
+  $duration: 1s;
+
   padding: 12px;
   border-radius: $border-radius-item;
   font-size: $font-size-button;
   font-weight: 700;
+  color: $color-text-4;
   cursor: pointer;
-  transition: all 0.3s;
-  margin: 12px 0;
   width: 100%;
   box-shadow: $shadow-low;
+  transition:
+    background-color $duration $ease-out-expo,
+    transform $duration $ease-out-expo,
+    box-shadow $duration $ease-out-expo,
+    opacity $duration $ease-out-expo;
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: $shadow-high;
+  }
 
   &--primary {
-    background: $btn-primary-bg-color;
-    color: $btn-primary-font-color;
+    background: $color-primary-1;
 
     &:hover {
-      background: $btn-primary-bg-hover-color;
-      @include btn-hover;
-    }
-
-    &:disabled {
-      @include btn-disabled;
+      background: darken($color-primary-1, 10%);
     }
   }
 
   &--secondary {
-    background: $btn-secondary-bg-color;
-    color: $btn-secondary-font-color;
+    background: $color-subtle-1;
 
     &:hover {
-      background: $btn-secondary-bg-hover-color;
-      @include btn-hover;
-    }
-
-    &:disabled {
-      @include btn-disabled;
+      background: darken($color-subtle-1, 10%);
     }
   }
 
   &--accent {
-    background: $btn-accent-bg-color;
-    color: $btn-accent-font-color;
+    background: $color-accent-1;
 
     &:hover {
-      background: $btn-accent-bg-hover-color;
-      @include btn-hover;
+      background: darken($color-accent-1, 10%);
     }
+  }
 
-    &:disabled {
-      @include btn-disabled;
-    }
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+.form-input {
+  $duration: 1s;
+
+  width: 100%;
+  padding: 12px 16px;
+  border: $border-item;
+  border-radius: $border-radius-item;
+  background: $color-background-item;
+  transition: border-color $duration $ease-out-expo;
+
+  &:focus {
+    border-color: $color-primary-1;
+  }
+
+  &::placeholder {
+    color: $color-text-3;
+  }
+}
+
+.lead-text {
+  font-size: $font-size-lead;
+}
+
+.caption-text {
+  font-size: $font-size-body-s;
+  font-style: italic;
+  text-align: center;
+}
+
+.color-panel {
+  font-weight: 700;
+  text-align: center;
+  padding: 24px 16px;
+  border-radius: $border-radius-content;
+  box-shadow: $shadow-high;
+
+  &--success {
+    background: $color-primary-2;
+    color: $color-primary-1;
+  }
+
+  &--failure {
+    background: $color-accent-2;
+    color: $color-accent-1;
   }
 }
 
 /* ===========================================
-//  ヘルプ画面
+//  Word Wolf
 // ======================================== */
 
-.help-screen {
-  max-width: 768px;
+.word-wolf {
+  &-container {
+    padding: 12px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  &-content {
+    @include section-content();
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+// ===========================================
+//  Modal Window
+// ===========================================
+
+.modal-window {
+  $duration: 1.4s;
+
   position: fixed;
   inset: 0;
-  margin: 0 auto;
+  z-index: 10;
   pointer-events: none;
-  z-index: 100;
 
-  &__modal {
-    $duration: 0.7s;
-
-    @include content-box;
-    box-shadow: $shadow-high;
+  &__mask {
     position: absolute;
-    inset: 24px;
+    inset: 0;
+    background: rgba($color: #2c3e50, $alpha: 0.7);
     opacity: 0;
-    pointer-events: none;
-    transform: translateX(-10px);
-    transition:
-      opacity $duration $ease-out-expo,
-      transform $duration $ease-out-expo;
-    z-index: 1;
+    transition: opacity $duration $ease-out-expo;
 
-    &--active {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateX(0);
-    }
+    @at-root {
 
-    &-content {
-      border: $border-item;
-      border-radius: $border-radius-item;
-      background: $color-background-item;
-      padding: 12px;
-      overflow: auto;
-      max-height: 70%;
-
-      &-title {
-        margin: 24px 0 4px;
-      }
-    }
-
-    &-step-title {
-      margin-top: 8px;
-    }
-
-    &-mask {
-      opacity: 0;
-      pointer-events: none;
-      position: fixed;
-      inset: 0;
-      background: rgba($color: #000, $alpha: 0.3);
-      transition: opacity $duration $ease-out-expo;
-
-      &--active {
+      .is-modal &,
+      .is-round-count &,
+      .is-help & {
         opacity: 1;
         pointer-events: auto;
       }
     }
   }
 
+  &__container {
+    $inset-modal: 24px;
 
-  &__btn {
+    @include section-content($inset-modal);
     position: absolute;
-    right: 24px;
-    bottom: 48px;
-    background: $btn-secondary-bg-color;
-    color: $btn-secondary-font-color;
-    width: 48px;
-    aspect-ratio: 1 / 1;
-    border-radius: 50%;
-    font-size: $font-size-button-help;
-    font-weight: 900;
-    cursor: pointer;
-    transition: all 0.3s;
+    inset: $inset-modal;
     opacity: 0;
-    -webkit-tap-highlight-color: transparent;
-    box-shadow: $shadow-low;
+    transform: translateX(-24px);
+    transition:
+      opacity $duration $ease-out-expo,
+      transform $duration $ease-out-expo;
 
-    &:hover {
-      transform: scale(1.1);
-      background: $btn-secondary-bg-hover-color;
-      box-shadow: $shadow-high;
+
+    @at-root {
+
+      .is-modal &,
+      .is-help & {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateX(0);
+      }
     }
+  }
 
-    &--active {
-      pointer-events: auto;
-      opacity: 0.7;
+  &__content {
+    @include content-box;
+    box-shadow: $shadow-high;
+    height: 100%;
+    overflow: auto;
+  }
+
+  &__round-count {
+    opacity: 0;
+    position: absolute;
+    top: 40%;
+    width: 100%;
+    text-align: center;
+    font-size: $font-size-round-count;
+    font-weight: 700;
+    font-family: $font-family-round-count;
+    color: $color-text-4;
+    letter-spacing: .1em;
+    text-shadow: $shadow-high;
+    transition:
+      opacity $duration $ease-out-expo;
+
+    @at-root .is-round-count & {
+      opacity: 1;
     }
   }
 }
+
+// ===========================================
+//  トップ画面
+// ===========================================
+
+
 
 /* ===========================================
 //  設定画面
 // ======================================== */
 
-$setup-screen-form-toggle-label-color: $color-subtle-1;
-$setup-screen-form-toggle-width: 220px;
-$setup-screen-form-toggle-height: 48px;
-
-$setup-screen-form-toggle-border-radius: calc($setup-screen-form-toggle-height / 2);
-
 .setup-screen {
-  &__content {
-    @include content-box;
-    margin-bottom: 24px;
-    box-shadow: $shadow-low;
-  }
-
   &__form {
-    &-group {
-      margin-bottom: 16px;
-    }
-
-    &-label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 700;
-    }
-
-    &-input {
-      $duration: 1.4s;
-
-      width: 100%;
-      padding: 12px 16px;
-      border: $border-item;
-      border-radius: $border-radius-item;
-      background: $color-background-item;
-      transition:
-        border-color $duration $ease-out-expo,
-        box-shadow $duration $ease-out-expo;
-
-      &:focus {
-        outline: none;
-        border-color: $color-primary-1;
-        box-shadow: $shadow-low;
-      }
-    }
-
-    &-text {
-      margin-top: 8px;
-      font-size: $font-size-body-s;
-      font-style: italic;
-    }
+    $duration: 1s;
 
     &-toggle {
+      $width-setup-form-toggle: 220px;
+      $height-setup-form-toggle: 48px;
+      $border-radius-setup-form-toggle: calc($height-setup-form-toggle / 2);
+
       position: relative;
       display: flex;
       justify-content: center;
       align-items: center;
       border: $border-item;
-      border-radius: $setup-screen-form-toggle-border-radius;
+      border-radius: $border-radius-setup-form-toggle;
       background: $color-background-item;
       overflow: hidden;
-      width: $setup-screen-form-toggle-width;
-      height: $setup-screen-form-toggle-height;
+      width: $width-setup-form-toggle;
+      height: $height-setup-form-toggle;
       margin: 0 auto;
 
-      &-input {
-        display: none;
-      }
-
       &-label {
-        flex: 1 1 0;
+        flex: 1;
         text-align: center;
-        line-height: $setup-screen-form-toggle-height;
         z-index: 1;
         cursor: pointer;
         font-weight: 700;
-        color: $setup-screen-form-toggle-label-color;
+        color: $color-text-2;
         -webkit-tap-highlight-color: transparent;
-        transition: color 0.3s;
+        transition: color $duration $ease-out-expo;
 
-        &--active {
+        &.is-active {
           color: $color-text-4;
         }
       }
@@ -534,16 +477,19 @@ $setup-screen-form-toggle-border-radius: calc($setup-screen-form-toggle-height /
         left: 0;
         width: 50%;
         height: 100%;
-        border-radius: $setup-screen-form-toggle-border-radius;
-        transition: all 0.3s;
+        border-radius: $border-radius-setup-form-toggle;
+        transition:
+          background-color $duration $ease-out-expo,
+          left $duration $ease-out-expo,
+          box-shadow $duration $ease-out-expo;
 
-        &--tamed {
+        @at-root .is-tamed & {
           background: $color-primary-1;
           left: 0;
           box-shadow: 1px 0 3px rgba(0, 0, 0, 0.12), 1px 0 2px rgba(0, 0, 0, 0.24);
         }
 
-        &--wild {
+        @at-root .is-wild & {
           background: $color-accent-1;
           left: 50%;
           box-shadow: -1px 0 3px rgba(0, 0, 0, 0.12), -1px 0 2px rgba(0, 0, 0, 0.24);
@@ -559,13 +505,13 @@ $setup-screen-form-toggle-border-radius: calc($setup-screen-form-toggle-height /
 
       &-frame {
         display: flex;
-        transition: all 0.3s;
+        transition: transform $duration $ease-out-expo;
 
-        &--tamed {
+        @at-root .is-tamed & {
           transform: translateX(0);
         }
 
-        &--wild {
+        @at-root .is-wild & {
           transform: translateX(-100%);
         }
       }
@@ -574,6 +520,8 @@ $setup-screen-form-toggle-border-radius: calc($setup-screen-form-toggle-height /
         padding: 12px 16px;
         width: 100%;
         flex-shrink: 0;
+        @include flex-column();
+        gap: 8px;
 
         &--tamed {
           background: $color-primary-2;
@@ -583,17 +531,8 @@ $setup-screen-form-toggle-border-radius: calc($setup-screen-form-toggle-height /
         &--wild {
           background: $color-accent-2;
           color: $color-accent-1;
-
         }
-
-        &-title {
-          text-align: center;
-          margin-bottom: 8px;
-        }
-
       }
-
-
     }
   }
 }
@@ -603,50 +542,17 @@ $setup-screen-form-toggle-border-radius: calc($setup-screen-form-toggle-height /
 // ======================================== */
 
 .word-set-screen {
-
-  &__text {
-    margin-bottom: 24px;
-    font-size: $font-size-body-s;
-    font-style: italic;
-    text-align: center;
-  }
-
   &__form {
-    &-label {
-      display: block;
-      margin: 16px 0 8px;
-      font-weight: 700;
-    }
-
-    &-input {
-      $duration: 1.4s;
-
-      width: 100%;
-      padding: 12px 16px;
-      border: $border-item;
-      border-radius: $border-radius-item;
-      background: $color-background-item;
-      transition:
-        border-color $duration $ease-out-expo,
-        box-shadow $duration $ease-out-expo;
-
-      &:focus {
-        outline: none;
-        border-color: $color-primary-1;
-        box-shadow: $shadow-low;
-      }
-    }
+    $duration: 1.4s;
 
     &-error-text {
       opacity: 0;
       user-select: none;
       font-weight: 700;
       color: $color-accent-1;
-      transition: all 0.3s;
-      font-size: $font-size-body-s;
-      font-style: italic;
+      transition: opacity $duration $ease-out-expo;
 
-      &--active {
+      &.is-active {
         opacity: 1;
       }
     }
@@ -657,52 +563,17 @@ $setup-screen-form-toggle-border-radius: calc($setup-screen-form-toggle-height /
 //  ワード配布画面
 // ======================================== */
 
-$word-distribution-word-display-bg-color: $color-background-item;
-
-$word-distribution-modal-animation-duration: 0.5s;
-
 .word-distribution-screen {
-  position: relative;
-
   &__text {
     color: $color-accent-1;
     font-weight: 700;
-    text-align: center;
-    font-size: $font-size-body-s;
-    font-style: italic;
-  }
-
-  &__modal {
-    $duration: 1.4s;
-    
-    @include content-box;
-    box-shadow: $shadow-high;
-    position: absolute;
-    inset: 24px 8px;
-    z-index: 10;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateX(-10px);
-    transition:
-      transform $duration $ease-out-expo,
-      opacity $duration $ease-out-expo;
-
-    &--active {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateX(0);
-    }
-
-    &-btn {
-      display: none;
-    }
   }
 
   &__word-display {
-    background: $word-distribution-word-display-bg-color;
-    margin-bottom: 16px;
-    padding: 24px 12px;
+    background: $color-background-item;
+    padding: 24px;
     border-radius: $border-radius-item;
+    width: 100%;
     text-align: center;
     font-size: $font-size-lead;
     font-weight: 700;
@@ -714,50 +585,24 @@ $word-distribution-modal-animation-duration: 0.5s;
 //  討論画面
 // ======================================== */
 
-$discussion-screen-timer-font-color: $color-accent-1;
-
 .discussion-screen {
-  &__content {
-    @include content-box;
-    margin-bottom: 24px;
-    box-shadow: $shadow-low;
-  }
-
   &__timer {
+    font-family: $font-family-timer;
     font-size: $font-size-timer;
     font-weight: 700;
-    color: $discussion-screen-timer-font-color;
+    color: $color-accent-1;
     text-align: center;
-    font-family: $font-family-timer;
     letter-spacing: .1em;
   }
 
   &__timer-controls {
     display: flex;
     gap: 12px;
-    justify-content: center;
-
-    &-btn {
-      width: auto;
-      min-width: 120px;
-      display: none;
-    }
-  }
-
-  &__players-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-
-    &-text {
-      text-align: center;
-      font-size: $font-size-body-s;
-      font-style: italic;
-      margin-top: 16px;
-    }
   }
 
   &__player {
+    $duration: 1s;
+
     &-item {
       background: $color-background-item;
       border-radius: $border-radius-item;
@@ -791,9 +636,12 @@ $discussion-screen-timer-font-color: $color-accent-1;
         max-height: 0;
         overflow: hidden;
         opacity: 0;
-        transition: all 0.2s;
+        transition:
+          opacity $duration $ease-out-expo,
+          margin $duration $ease-out-expo,
+          padding $duration $ease-out-expo;
 
-        &--show {
+        &.is-active {
           max-height: 100px;
           margin-top: 12px;
           padding: 8px;
@@ -808,46 +656,7 @@ $discussion-screen-timer-font-color: $color-accent-1;
 //  投票画面
 // ======================================== */
 
-$vote-screen-modal-animation-duration: 0.5s;
-
 .vote-screen {
-  position: relative;
-
-  &__modal {
-    $duration: 1.4s;
-
-    @include content-box;
-    box-shadow: $shadow-high;
-    position: absolute;
-    inset: 24px 8px;
-    z-index: 10;
-    opacity: 0;
-    pointer-events: none;
-    transform: translateX(-10px);
-    transition:
-      transform $duration $ease-out-expo,
-      opacity $duration $ease-out-expo;
-
-    &--active {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateX(0);
-    }
-
-    &-text {
-      margin-bottom: 24px;
-      font-size: $font-size-body-s;
-      font-style: italic;
-      text-align: center;
-    }
-  }
-
-  &__options {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
-
   &__option-item {
     $duration: 0.7s;
 
@@ -857,13 +666,13 @@ $vote-screen-modal-animation-duration: 0.5s;
     cursor: pointer;
     box-shadow: $shadow-low;
     font-weight: 700;
-    transition: 
+    transition:
       background-color $duration $ease-out-expo,
       color $duration $ease-out-expo,
       box-shadow $duration $ease-out-expo;
 
-    &--selected {
-      background: $color-primary-1;
+    &.is-active {
+      background: $color-accent-1;
       color: $color-text-4;
       box-shadow: $shadow-high;
     }
@@ -878,47 +687,10 @@ $vote-screen-modal-animation-duration: 0.5s;
   &__accused-player {
     font-size: $font-size-heading-s;
     font-weight: 700;
-    margin-bottom: 24px;
     text-align: center;
   }
 
-  &__result {
-    &-item {
-      display: none;
-      font-weight: 700;
-      margin-bottom: 24px;
-      padding: 24px 16px;
-      border-radius: $border-radius-content;
-      text-align: center;
-      box-shadow: $shadow-high;
-
-      &--success {
-        background: $color-primary-2;
-        color: $color-primary-1;
-      }
-
-      &--failure {
-        background: $color-accent-2;
-        color: $color-accent-1;
-      }
-    }
-
-    &-lead {
-      font-size: $font-size-lead
-    }
-  }
-
   &__volt-history {
-    @include content-box;
-    margin-bottom: 16px;
-    box-shadow: $shadow-low;
-
-    &-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
     &-item {
       background: $color-background-item;
       border-radius: $border-radius-item;
@@ -941,124 +713,20 @@ $vote-screen-modal-animation-duration: 0.5s;
 //  逆転チャンス画面
 // ======================================== */
 
-.wolf-chance-screen {
-  &__form {
-    &-group {
-      margin-bottom: 16px;
-    }
 
-    &-label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 700;
-    }
-
-    &-input {
-      $duration: 1.4s;
-
-      width: 100%;
-      padding: 12px 16px;
-      border: $border-item;
-      border-radius: $border-radius-item;
-      background: $color-background-item;
-      transition:
-        border-color $duration $ease-out-expo,
-        box-shadow $duration $ease-out-expo;
-
-      &:focus {
-        outline: none;
-        border-color: $color-primary-1;
-        box-shadow: $shadow-low;
-      }
-    }
-
-    &-text {
-      margin-bottom: 24px;
-      font-size: $font-size-body-s;
-      font-style: italic;
-      text-align: center;
-    }
-  }
-}
 
 /* ===========================================
 //  逆転チャンス結果画面
 // ======================================== */
 
-.wolf-chance-result-screen {
-  &__result {
-    &-item {
-      display: none;
-      font-weight: 700;
-      margin-bottom: 24px;
-      padding: 24px;
-      border-radius: $border-radius-content;
-      text-align: center;
-      box-shadow: $shadow-high;
 
-      &--success {
-        background: $color-primary-2;
-        color: $color-primary-1;
-      }
-
-      &--failure {
-        background: $color-accent-2;
-        color: $color-accent-1;
-      }
-    }
-
-    &-lead {
-      font-size: $font-size-lead;
-    }
-  }
-
-  &__text {
-    font-size: $font-size-body-s;
-    font-style: italic;
-  }
-}
 
 /* ===========================================
 //  ゲーム結果画面
 // ======================================== */
 
 .game-result-screen {
-  &__result {
-    &-item {
-      display: none;
-      font-size: $font-size-lead;
-      font-weight: 700;
-      margin-bottom: 24px;
-      padding: 24px;
-      border-radius: $border-radius-content;
-      text-align: center;
-      box-shadow: $shadow-high;
-
-      &--villager-win {
-        background: $color-primary-2;
-        color: $color-primary-1;
-      }
-
-      &--wolf-win {
-        background: $color-accent-2;
-        color: $color-accent-1;
-      }
-    }
-  }
-
   &__score {
-    &-board {
-      @include content-box;
-      margin-bottom: 16px;
-      box-shadow: $shadow-low;
-    }
-
-    &-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
     &-item {
       background: $color-background-item;
       border-radius: $border-radius-item;
@@ -1071,7 +739,6 @@ $vote-screen-modal-animation-duration: 0.5s;
     &-player {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 4px;
     }
 
     &-word {
@@ -1102,7 +769,7 @@ $vote-screen-modal-animation-duration: 0.5s;
       font-weight: 700;
       text-shadow: $shadow-high;
       position: absolute;
-      top: 6px;
+      top: 4px;
       right: 48px;
     }
   }
@@ -1114,18 +781,6 @@ $vote-screen-modal-animation-duration: 0.5s;
 
 .end-result-screen {
   &__score {
-    &-board {
-      @include content-box;
-      margin-bottom: 16px;
-      box-shadow: $shadow-low;
-    }
-
-    &-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
     &-item {
       background: $color-background-item;
       border-radius: $border-radius-item;
@@ -1143,6 +798,75 @@ $vote-screen-modal-animation-duration: 0.5s;
       position: absolute;
       top: -6px;
       left: -16px;
+    }
+  }
+}
+
+/* ===========================================
+//  ヘルプ画面
+// ======================================== */
+
+.help-screen {
+  &__modal {
+    &-body {
+      border: $border-item;
+      border-radius: $border-radius-item;
+      background: $color-background-item;
+      padding: 12px;
+      overflow: auto;
+      flex: 1;
+      @include flex-column();
+      gap: 24px;
+
+      &-item {
+        @include flex-column();
+        gap: 12px;
+
+        &--author {
+          text-align: center;
+        }
+      }
+    }
+  }
+
+  &__btn {
+    $duration: 1s;
+
+    position: fixed;
+    right: 24px;
+    bottom: 48px;
+    z-index: 100;
+    background: $color-subtle-1;
+    color: $color-text-4;
+    width: 48px;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    font-size: $font-size-button-help;
+    font-weight: 900;
+    cursor: pointer;
+    transition:
+      opacity $duration $ease-out-expo,
+      transform $duration $ease-out-expo,
+      box-shadow $duration $ease-out-expo,
+      background-color $duration $ease-out-expo;
+    opacity: 0.8;
+    -webkit-tap-highlight-color: transparent;
+    box-shadow: $shadow-low;
+
+    &:hover {
+      transform: scale(1.1);
+      background: darken($color-subtle-1, 10%);
+      box-shadow: $shadow-high;
+    }
+
+    @at-root {
+
+      .is-help &,
+      .is-modal &,
+      .is-round-count & {
+        pointer-events: none;
+        opacity: 0;
+      }
     }
   }
 }
