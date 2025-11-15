@@ -275,93 +275,95 @@
 
       <!-- ヘルプ画面 -->
       <section id="help-screen" class="help-screen">
-        <div id="help-modal-container" style="display: none;">
-          <div id="help-modal-content" class="modal-content">
-            <h2 class="title title--section">ヘルプ</h2>
-            <div class="help-screen__modal-body">
-              <div class="help-screen__modal-body-item">
-                <h3 class="title title--content">ワードウルフとは？</h3>
-                <p>
-                  ワードウルフとは、プレイヤー同士で会話をしながら、「異なるお題を持っている人（=ワードウルフ）」を見つけ出す推理ゲームです。各プレイヤーには1つずつお題（ワード）が与えられますが、そのうち1人だけ、他のプレイヤーとは異なるワードが配られます。誰がワードウルフなのかを、会話を通して見抜きましょう。
-                </p>
-              </div>
-              <div class="help-screen__modal-body-item">
-                <h3 class="title title--content">遊び方</h3>
-                <div>
-                  <h4 class="help-screen__modal-step-title">① ゲーム設定</h4>
-                  <ul>
-                    <li>・ゲームモードの選択 ※下記詳細</li>
-                    <li>・プレイヤー人数の入力</li>
-                    <li>・プレイヤー名の入力</li>
-                    <li>・討論時間の設定</li>
-                  </ul>
-                </div>
-                <div>
-                  <h4 class="help-screen__modal-step-title">② ワードの設定 ※家畜モードのみ</h4>
-                  <p>マスターが「村人ワード」と「ウルフワード」の2つを設定します。全体の会話バランスが崩れないよう、似た内容で設定するのがコツです。</p>
-                </div>
-                <div>
-                  <h4 class="help-screen__modal-step-title">③ ワードの確認</h4>
-                  <p>プレイヤー全員にそれぞれのお題が順番に表示されます。1人だけには「ウルフワード」が配られ、他のプレイヤーには「村人ワード」が配られます。</p>
-                </div>
-                <div>
-                  <h4 class="help-screen__modal-step-title">④ 討論タイム</h4>
-                  <p>設定された時間内で、お題に関する自由な会話を行います。お題を直接口にしたり、明確に連想できる発言は避けましょう。</p>
-                </div>
-                <div>
-                  <h4 class="help-screen__modal-step-title">⑤ 投票</h4>
-                  <p>討論終了後、ウルフだと思うプレイヤーに、プレイヤーが順番に投票します。</p>
-                </div>
-                <div>
-                  <h4 class="help-screen__modal-step-title">⑥ 投票結果</h4>
-                  <p>最も票を集めたプレイヤーがウルフだった場合、村人の勝利です。ウルフではなかった場合は、ウルフの勝利となりますが...
-                    <br>
-                    <strong>ウルフ側には逆転チャンスがあります。</strong>
-                    ウルフが「村人側のワード」を正しく推理できた場合、逆転勝利となります。
+        <div class="help-screen__inner">
+          <div id="help-modal-container" style="display: none;">
+            <div id="help-modal-content" class="modal-content">
+              <h2 class="title title--section">ヘルプ</h2>
+              <div class="help-screen__modal-body">
+                <div class="help-screen__modal-body-item">
+                  <h3 class="title title--content">ワードウルフとは？</h3>
+                  <p>
+                    ワードウルフとは、プレイヤー同士で会話をしながら、「異なるお題を持っている人（=ワードウルフ）」を見つけ出す推理ゲームです。各プレイヤーには1つずつお題（ワード）が与えられますが、そのうち1人だけ、他のプレイヤーとは異なるワードが配られます。誰がワードウルフなのかを、会話を通して見抜きましょう。
                   </p>
                 </div>
+                <div class="help-screen__modal-body-item">
+                  <h3 class="title title--content">遊び方</h3>
+                  <div>
+                    <h4 class="help-screen__modal-step-title">① ゲーム設定</h4>
+                    <ul>
+                      <li>・ゲームモードの選択 ※下記詳細</li>
+                      <li>・プレイヤー人数の入力</li>
+                      <li>・プレイヤー名の入力</li>
+                      <li>・討論時間の設定</li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 class="help-screen__modal-step-title">② ワードの設定 ※家畜モードのみ</h4>
+                    <p>マスターが「村人ワード」と「ウルフワード」の2つを設定します。全体の会話バランスが崩れないよう、似た内容で設定するのがコツです。</p>
+                  </div>
+                  <div>
+                    <h4 class="help-screen__modal-step-title">③ ワードの確認</h4>
+                    <p>プレイヤー全員にそれぞれのお題が順番に表示されます。1人だけには「ウルフワード」が配られ、他のプレイヤーには「村人ワード」が配られます。</p>
+                  </div>
+                  <div>
+                    <h4 class="help-screen__modal-step-title">④ 討論タイム</h4>
+                    <p>設定された時間内で、お題に関する自由な会話を行います。お題を直接口にしたり、明確に連想できる発言は避けましょう。</p>
+                  </div>
+                  <div>
+                    <h4 class="help-screen__modal-step-title">⑤ 投票</h4>
+                    <p>討論終了後、ウルフだと思うプレイヤーに、プレイヤーが順番に投票します。</p>
+                  </div>
+                  <div>
+                    <h4 class="help-screen__modal-step-title">⑥ 投票結果</h4>
+                    <p>最も票を集めたプレイヤーがウルフだった場合、村人の勝利です。ウルフではなかった場合は、ウルフの勝利となりますが...
+                      <br>
+                      <strong>ウルフ側には逆転チャンスがあります。</strong>
+                      ウルフが「村人側のワード」を正しく推理できた場合、逆転勝利となります。
+                    </p>
+                  </div>
+                </div>
+                <div class="help-screen__modal-body-item">
+                  <h3 class="title title--content">スコアの計算</h3>
+                  <div>
+                    <h4 class="help-screen__modal-step-title">ウルフを指名成功+逆転チャンス失敗</h4>
+                    <p>ウルフに投票した村人に+1点</p>
+                  </div>
+                  <div>
+                    <h4 class="help-screen__modal-step-title">ウルフを指名成功+逆転チャンス成功</h4>
+                    <p>ウルフに+1点</p>
+                  </div>
+                  <div>
+                    <h4 class="help-screen__modal-step-title">ウルフを指名失敗</h4>
+                    <p>ウルフに+1点</p>
+                  </div>
+                </div>
+                <div class="help-screen__modal-body-item">
+                  <h3 class="title title--content">モードについて</h3>
+                  <div>
+                    <h4 class="help-screen__modal-step-title">家畜モード（Tamed Mode）</h4>
+                    <p>ラウンドごとに1人のマスターが順番に選ばれ、お題を設定します。他のプレイヤーはそのお題でワードウルフをプレイします。マスターは議論には参加せず、観察者として進行を楽しめます。</p>
+                    <p>プレイ人数：4～8人</p>
+                  </div>
+                  <div>
+                    <h4 class="help-screen__modal-step-title">野生モード（Wild Mode）</h4>
+                    <p>全員がプレイヤーとしてゲームに参加し、お題は自動でランダムに選ばれます。よりカジュアルにテンポよく遊びたいときにおすすめのモードです。</p>
+                    <p>プレイ人数：3～7人</p>
+                  </div>
+                </div>
+                <div class="help-screen__modal-body-item help-screen__modal-body-item--author">
+                  <h3 class="title title--content">制作者</h3>
+                  <div>
+                    <h4 class="help-screen__modal-step-title">Webクリエイター｜DY</h4>
+                    <a href="https://workalone.jp/" target="_blank">https://workalone.jp/</a>
+                  </div>
+                  <strong>Thanks for Playing!</strong>
+                </div>
               </div>
-              <div class="help-screen__modal-body-item">
-                <h3 class="title title--content">スコアの計算</h3>
-                <div>
-                  <h4 class="help-screen__modal-step-title">ウルフを指名成功+逆転チャンス失敗</h4>
-                  <p>ウルフに投票した村人に+1点</p>
-                </div>
-                <div>
-                  <h4 class="help-screen__modal-step-title">ウルフを指名成功+逆転チャンス成功</h4>
-                  <p>ウルフに+1点</p>
-                </div>
-                <div>
-                  <h4 class="help-screen__modal-step-title">ウルフを指名失敗</h4>
-                  <p>ウルフに+1点</p>
-                </div>
-              </div>
-              <div class="help-screen__modal-body-item">
-                <h3 class="title title--content">モードについて</h3>
-                <div>
-                  <h4 class="help-screen__modal-step-title">家畜モード（Tamed Mode）</h4>
-                  <p>ラウンドごとに1人のマスターが順番に選ばれ、お題を設定します。他のプレイヤーはそのお題でワードウルフをプレイします。マスターは議論には参加せず、観察者として進行を楽しめます。</p>
-                  <p>プレイ人数：4～8人</p>
-                </div>
-                <div>
-                  <h4 class="help-screen__modal-step-title">野生モード（Wild Mode）</h4>
-                  <p>全員がプレイヤーとしてゲームに参加し、お題は自動でランダムに選ばれます。よりカジュアルにテンポよく遊びたいときにおすすめのモードです。</p>
-                  <p>プレイ人数：3～7人</p>
-                </div>
-              </div>
-              <div class="help-screen__modal-body-item help-screen__modal-body-item--author">
-                <h3 class="title title--content">制作者</h3>
-                <div>
-                  <h4 class="help-screen__modal-step-title">Webクリエイター｜DY</h4>
-                  <a href="https://workalone.jp/" target="_blank">https://workalone.jp/</a>
-                </div>
-                <strong>Thanks for Playing!</strong>
-              </div>
+              <button id="close-help-btn" class="btn btn--secondary">閉じる</button>
             </div>
-            <button id="close-help-btn" class="btn btn--secondary">閉じる</button>
           </div>
+          <button id="show-help-btn" class="help-screen__btn">?</button>
         </div>
-        <button id="show-help-btn" class="help-screen__btn">?</button>
       </section>
 
       <!-- モーダルウィンドウ -->

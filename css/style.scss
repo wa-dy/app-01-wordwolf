@@ -268,7 +268,7 @@ ul {
   }
 
   &:disabled {
-    opacity: 0.5;
+    opacity: 0.3;
     pointer-events: none;
   }
 }
@@ -807,6 +807,15 @@ ul {
 // ======================================== */
 
 .help-screen {
+  &__inner {
+    $inset-help: 24px;
+
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    @include section-content($inset-help);
+  }
+
   &__modal {
     &-body {
       border: $border-item;
@@ -832,7 +841,7 @@ ul {
   &__btn {
     $duration: 1s;
 
-    position: fixed;
+    position: absolute;
     right: 24px;
     bottom: 48px;
     z-index: 100;
@@ -850,6 +859,7 @@ ul {
       box-shadow $duration $ease-out-expo,
       background-color $duration $ease-out-expo;
     opacity: 0.8;
+    pointer-events: auto;
     -webkit-tap-highlight-color: transparent;
     box-shadow: $shadow-low;
 

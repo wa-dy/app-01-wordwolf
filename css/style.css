@@ -151,7 +151,7 @@ ul {
   background: #d62c1a;
 }
 .btn:disabled {
-  opacity: 0.5;
+  opacity: 0.3;
   pointer-events: none;
 }
 
@@ -567,6 +567,13 @@ ul {
 /* ===========================================
 //  ヘルプ画面
 // ======================================== */
+.help-screen__inner {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  max-width: 744px;
+  margin: 0 auto;
+}
 .help-screen__modal-body {
   border: 2px solid #bfcfdd;
   border-radius: 8px;
@@ -587,7 +594,7 @@ ul {
   text-align: center;
 }
 .help-screen__btn {
-  position: fixed;
+  position: absolute;
   right: 24px;
   bottom: 48px;
   z-index: 100;
@@ -601,6 +608,7 @@ ul {
   cursor: pointer;
   transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1), transform 1s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 1s cubic-bezier(0.16, 1, 0.3, 1), background-color 1s cubic-bezier(0.16, 1, 0.3, 1);
   opacity: 0.8;
+  pointer-events: auto;
   -webkit-tap-highlight-color: transparent;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
