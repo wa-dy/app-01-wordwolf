@@ -876,8 +876,10 @@ function setupVoteScreen() {
   // 投票中の場合はモーダルを表示
   if (gameState.isVoting) {
     elements.page.classList.add('is-modal');
+    elements.modalWindowContent.append(elements.voteModalContent);
   } else {
     elements.page.classList.remove('is-modal');
+    elements.voteModalContainer.append(elements.voteModalContent);
   }
 
   saveGameState();
@@ -886,7 +888,6 @@ function setupVoteScreen() {
 // 投票開始
 function startVote() {
   gameState.isVoting = true;
-  elements.modalWindowContent.append(elements.voteModalContent);
   setupVoteScreen();
 }
 
@@ -957,7 +958,6 @@ function showVoteNextModalAnimation() {
 function endVote() {
   gameState.isVoting = false;
   gameState.isVoteEnded = true;
-  elements.voteModalContainer.append(elements.voteModalContent);
   setupVoteScreen();
 }
 

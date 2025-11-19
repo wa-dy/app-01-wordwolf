@@ -153,6 +153,7 @@ ul {
 .btn:disabled {
   opacity: 0.3;
   pointer-events: none;
+  box-shadow: none;
 }
 
 .form-input {
@@ -578,17 +579,17 @@ ul {
   border: 2px solid #bfcfdd;
   border-radius: 8px;
   background: #fff;
-  padding: 12px;
+  padding: 24px 12px;
   overflow: auto;
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 32px;
 }
 .help-screen__modal-body-item {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 .help-screen__modal-body-item--author {
   text-align: center;
