@@ -51,7 +51,7 @@ const gameState = {
 // JSONファイルからワードセットを読み込み
 async function loadWordSets() {
   try {
-    const response = await fetch("/assets/data/wordsets.json");
+    const response = await fetch("assets/data/wordsets.json");
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
