@@ -1,0 +1,65 @@
+@use "./../../foundation/_base.scss";
+
+.p-modal-window {
+  $duration: 1.4s;
+
+  &__inner {
+    @include base.position-fixed($top: 0, $bottom: 0, $right: 0, $left: 0);
+    z-index: 4;
+  }
+
+  &__mask {
+    @include base.position-abs($top: 0, $bottom: 0, $right: 0, $left: 0);
+    background-color: base.$color-background-modal-mask;
+    opacity: 0;
+    transition: opacity $duration base.$ease-out-expo;
+
+    .is-modal &,
+    .is-round-count &,
+    .is-help & {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  &__container {
+    position: relative;
+    max-width: base.$max-width-screen;
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  &__content {
+    @include base.position-abs($top: 24px, $bottom: 24px, $right: 24px, $left: 24px);
+    @include base.card-style();
+    overflow: auto;
+    box-shadow: base.$shadow-high;
+    opacity: 0;
+    transform: translateX(-24px);
+    transition: opacity $duration base.$ease-out-expo, transform $duration base.$ease-out-expo;
+
+    .is-modal &,
+    .is-help & {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(0);
+    }
+  }
+
+  &__round-count {
+    @include base.position-abs($top: 40%, $bottom: auto, $right: 0, $left: 0);
+    opacity: 0;
+    text-align: center;
+    font-size: base.$font-size-round-count;
+    font-weight: 700;
+    font-family: base.$font-family-round-count;
+    color: base.$color-text-4;
+    letter-spacing: 0.1em;
+    text-shadow: base.$shadow-high;
+    transition: opacity $duration base.$ease-out-expo;
+
+    .is-round-count & {
+      opacity: 1;
+    }
+  }
+}

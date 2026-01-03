@@ -1,390 +1,393 @@
 <!DOCTYPE html>
 <html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ワードウルフ進行支援ツール" />
+    <title>みんなのワードウルフ</title>
+    <link rel="icon" href="assets/images/favicon.ico" />
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Yusei+Magic&family=Zen+Maru+Gothic:wght@400;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="ワードウルフ進行支援ツール">
-  <title>みんなのワードウルフ</title>
-  <link rel="icon" href="img/favicon.ico">
-  <!-- google fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=DotGothic16&family=Yusei+Magic&family=Zen+Maru+Gothic:wght@400;700;900&display=swap"
-    rel="stylesheet">
-  <!-- reset.css ress -->
-  <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-  <link rel="stylesheet" href="css/style.css">
-</head>
-
-<body id="page" class="page">
-  <div class="word-wolf-container">
-    <main class="word-wolf-content">
-      <!-- トップページ -->
-      <section id="top-page-screen" class="top-page-screen screen is-active">
-        <div class="screen__inner">
-          <h1 class="top-page__title title title--main">みんなのワードウルフ</h1>
-          <button id="start-new-game-btn" class="btn btn--primary">はじめから</button>
-          <button id="continue-game-btn" class="btn btn--primary" disabled>つづきから</button>
-        </div>
-      </section>
-
-      <!-- ゲーム設定画面 -->
-      <section id="setup-screen" class="setup-screen screen is-tamed">
-        <div class="screen__inner">
-          <h2 class="title title--section">ゲーム設定</h2>
-          <form class="screen__content" onsubmit="return false;">
-            <div class="content-item">
-              <h3 class="title title--content">ゲームモード選択</h3>
-              <div class="setup-screen__form-toggle">
-                <input type="radio" id="tamed-mode" name="game-mode" value="tamed" checked style="display: none;">
-                <label for="tamed-mode" class="setup-screen__form-toggle-label is-active">家畜モード</label>
-                <input type="radio" id="wild-mode" name="game-mode" value="wild" style="display: none;">
-                <label for="wild-mode" class="setup-screen__form-toggle-label">野生モード</label>
-                <span id="game-mode-slider" class="setup-screen__form-toggle-slider"></span>
-              </div>
-              <div class="setup-screen__form-description">
-                <ul id="game-mode-description" class="setup-screen__form-description-frame">
-                  <li class="setup-screen__form-description-item setup-screen__form-description-item--tamed">
-                    <h4 class="title">家畜モード（Tamed Mode）</h4>
-                    <p>ラウンドごとに1人のマスターが順番に選ばれ、お題を設定します。他のプレイヤーはそのお題でワードウルフをプレイします。マスターは議論には参加せず、観察者として進行を楽しめます。
-                    </p>
-                  </li>
-                  <li class="setup-screen__form-description-item setup-screen__form-description-item--wild">
-                    <h4 class="title">野生モード（Wild Mode）</h4>
-                    <p>全員がプレイヤーとしてゲームに参加し、お題は自動でランダムに選ばれます。よりカジュアルにテンポよく遊びたいときにおすすめのモードです。</p>
-                  </li>
-                </ul>
-              </div>
+  <body id="page" class="js-page">
+    <div class="l-wrapper">
+      <main class="l-main">
+        <!-- トップページ -->
+        <section class="p-top l-screen js-top js-screen is-active">
+          <div class="l-screen__inner">
+            <h1 class="c-title c-title--main">みんなのワードウルフ</h1>
+            <div class="l-screen__content">
+              <button class="c-button js-top-start-button">はじめから</button>
+              <button class="c-button js-top-continue-button" disabled>つづきから</button>
             </div>
-            <div class="content-item">
-              <h3 class="title title--content">プレイヤー構成</h3>
+          </div>
+        </section>
+
+        <!-- ゲーム設定画面 -->
+        <section class="p-setup l-screen js-setup js-screen is-tamed">
+          <div class="l-screen__inner">
+            <h2 class="c-title c-title--section">ゲーム設定</h2>
+            <form class="l-screen__content" onsubmit="return false;">
+              <div class="c-item">
+                <h3 class="c-title c-title--content">ゲームモード選択</h3>
+                <div class="p-setup__mode-selector">
+                  <input type="radio" id="tamed-mode" class="js-setup-tamed-mode" name="game-mode" value="tamed" checked style="display: none" />
+                  <label class="p-setup__mode-selector-label js-setup-mode-selector-label is-active" for="tamed-mode">家畜モード</label>
+                  <input type="radio" id="wild-mode" class="js-setup-wild-mode" name="game-mode" value="wild" style="display: none" />
+                  <label class="p-setup__mode-selector-label js-setup-mode-selector-label" for="wild-mode">野生モード</label>
+                  <span class="p-setup__mode-selector-slider"></span>
+                </div>
+                <div class="p-setup__mode-description">
+                  <ul class="p-setup__mode-description-frame">
+                    <li class="p-setup__mode-description-item p-setup__mode-description-item--tamed">
+                      <h4 class="c-title">家畜モード（Tamed Mode）</h4>
+                      <p>ラウンドごとに1人のマスターが順番に選ばれ、お題を設定します。他のプレイヤーはそのお題でワードウルフをプレイします。マスターは議論には参加せず、観察者として進行を楽しめます。</p>
+                    </li>
+                    <li class="p-setup__mode-description-item p-setup__mode-description-item--wild">
+                      <h4 class="c-title">野生モード（Wild Mode）</h4>
+                      <p>全員がプレイヤーとしてゲームに参加し、お題は自動でランダムに選ばれます。よりカジュアルにテンポよく遊びたいときにおすすめのモードです。</p>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="c-item">
+                <h3 class="c-title c-title--content">プレイヤー構成</h3>
+                <div>
+                  <label for="total-players">プレイヤー総数:</label>
+                  <input type="number" id="total-players" class="c-form-input js-setup-total-players" min="4" max="8" value="4" required />
+                </div>
+                <p class="c-text-caption js-setup-total-players-text">プレイ人数：4～8人</p>
+              </div>
+              <div class="c-item">
+                <h3 class="c-title c-title--content">プレイヤー名</h3>
+                <div class="c-item-list js-setup-players-list"></div>
+              </div>
+              <div class="c-item">
+                <h3 class="c-title c-title--content">時間設定</h3>
+                <div>
+                  <label for="timer-minutes">討論時間（分）:</label>
+                  <input type="number" id="timer-minutes" class="c-form-input js-setup-timer-minutes" min="1" max="10" value="3" required />
+                </div>
+              </div>
+              <button class="c-button js-setup-start-button">ゲーム開始</button>
+            </form>
+          </div>
+        </section>
+
+        <!-- ワードセット画面（家畜モード） -->
+        <section class="p-word-set l-screen js-word-set js-screen">
+          <div class="l-screen__inner">
+            <h2 class="c-title c-title--section">ワードの設定</h2>
+            <form class="l-screen__content" onsubmit="return false;">
+              <h3 class="c-title c-title--content js-word-set-master-player"></h3>
+              <p class="c-text-caption">マスターはワードを設定してください</p>
               <div>
-                <label for="total-players">プレイヤー総数:</label>
-                <input type="number" id="total-players" class="form-input" min="4" max="8" value="4" required>
+                <label for="word-set-villager-word">村人ワード:</label>
+                <input type="text" id="word-set-villager-word" class="c-form-input js-word-set-villager-word" max="20" required />
               </div>
-              <p id="total-players-caution-text" class="caption-text">
-                プレイ人数：4～8人
-              </p>
-            </div>
-            <div class="content-item">
-              <h3 class="title title--content">プレイヤー名</h3>
-              <div id="player-names-container" class="item-list"></div>
-            </div>
-            <div class="content-item">
-              <h3 class="title title--content">時間設定</h3>
               <div>
-                <label for="timer-minutes">討論時間（分）:</label>
-                <input type="number" id="timer-minutes" class="form-input" min="1" max="10" value="3" required>
+                <label for="word-set-wolf-word">ウルフワード:</label>
+                <input type="text" id="word-set-wolf-word" class="c-form-input js-word-set-wolf-word" max="20" required />
+              </div>
+              <p class="c-form-error-text js-word-set-error-text">※ワードは違うものを設定してください</p>
+              <button class="c-button c-button--secondary js-word-set-swap-words-button">ワードを入れ替える</button>
+              <button class="c-button js-word-set-submit-button">決定</button>
+            </form>
+          </div>
+        </section>
+
+        <!-- ワード配布画面 -->
+        <section class="p-word-distribution l-screen js-word-distribution js-screen">
+          <div class="l-screen__inner">
+            <h2 class="c-title c-title--section">ワードの確認</h2>
+            <div class="l-screen__content">
+              <div>
+                <h3 class="c-title c-title--content js-word-distribution-current-player"></h3>
+                <p class="c-text-caption c-text-caption--accent js-word-distribution-current-text"></p>
+              </div>
+              <button class="c-button c-button--accent js-word-distribution-reveal-button">ワードの確認</button>
+            </div>
+            <div class="l-modal-content js-word-distribution-modal-content">
+              <div class="l-modal-body js-word-distribution-modal-body">
+                <h3 class="c-title c-title--content js-word-distribution-modal-player"></h3>
+                <div class="p-word-distribution__word-display js-word-distribution-modal-word"></div>
+                <button class="c-button js-word-distribution-next-button" style="display: none">次のプレイヤーへ</button>
+                <button class="c-button c-button--accent js-word-distribution-show-discussion-button" style="display: none">討論画面へ</button>
               </div>
             </div>
-            <button id="start-game-btn" class="btn btn--primary">ゲーム開始</button>
-          </form>
-        </div>
-      </section>
-
-      <!-- ワードセット画面（家畜モード） -->
-      <section id="word-set-screen" class="word-set-screen screen">
-        <div class="screen__inner">
-          <h2 class="title title--section">ワードの設定</h2>
-          <form class="screen__content" onsubmit="return false;">
-            <h3 id="word-set-master-player" class="title title--content"></h3>
-            <p class="caption-text">マスターはワードを設定してください</p>
-            <div>
-              <label for="word-set-villager-word">村人ワード:</label>
-              <input type="text" id="word-set-villager-word" class="form-input" max="20" required>
-            </div>
-            <div>
-              <label for="word-set-wolf-word">ウルフワード:</label>
-              <input type="text" id="word-set-wolf-word" class="form-input" max="20" required>
-            </div>
-            <p id="word-set-error-text" class="word-set-screen__form-error-text caption-text">※ワードは違うものを設定してください</p>
-            <button id="word-set-swap-words-btn" class="btn btn--secondary">ワードを入れ替える</button>
-            <button id="word-set-confirm-btn" class="btn btn--primary">決定</button>
-          </form>
-        </div>
-      </section>
-
-      <!-- ワード配布画面 -->
-      <section id="word-distribution-screen" class="word-distribution-screen screen">
-        <div class="screen__inner">
-          <h2 class="title title--section">ワードの確認</h2>
-          <div id="current-player-info" class="screen__content">
-            <div>
-              <h3 id="current-player-name" class="title title--content"></h3>
-              <p id="word-distribution-current-text" class="word-distribution-screen__text caption-text"></p>
-            </div>
-            <button id="reveal-word-btn" class="btn btn--accent">ワードの確認</button>
           </div>
-          <div id="word-modal-container" style="display: none;">
-            <div id="word-modal-content" class="modal-content">
-              <h3 id="word-modal-player-name" class="title title--content"></h3>
-              <div id="modal-word" class="word-distribution-screen__word-display"></div>
-              <button id="next-player-btn" class="btn btn--primary" style="display: none;">次のプレイヤーへ</button>
-              <button id="show-discussion-btn" class="btn btn--accent" style="display: none;">討論画面へ</button>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- 討論画面 -->
-      <section id="discussion-screen" class="discussion-screen screen">
-        <div class="screen__inner">
-          <h2 class="title title--section">討論タイム</h2>
-          <div class="screen__content">
-            <div class="content-item">
-              <div id="timer-display" class="discussion-screen__timer"></div>
-              <div class="discussion-screen__timer-controls">
-                <button id="start-timer-btn" class="btn btn--primary">討論開始</button>
-                <button id="pause-timer-btn" class="btn btn--secondary" style="display: none;">一時停止</button>
-                <button id="resume-timer-btn" class="btn btn--primary" style="display: none;">再開</button>
-                <button id="end-discussion-btn" class="btn btn--accent" style="display: none;">討論終了</button>
-              </div>
-              <audio id="wolf-sound" src="audio/wolf_howl_alert.mp3" preload="auto" muted></audio>
-            </div>
-            <div class="content-item">
-              <h3 id="master-player-name" class="title title--content"></h3>
-              <ul id="players-list" class="item-list"></ul>
-              <p class="caption-text">プレイヤー名をクリックすることで<br>そのプレイヤーのワードを表示</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 投票画面 -->
-      <section id="vote-screen" class="vote-screen screen">
-        <div class="screen__inner">
-          <h2 class="title title--section">投票</h2>
-          <div class="screen__content">
-            <button id="start-vote-btn" class="btn btn--primary">投票開始</button>
-            <button id="vote-result-btn" class="btn btn--accent" style="display: none;">投票結果へ</button>
-            <button id="continue-discussion-btn" class="btn btn--secondary">再討論</button>
-          </div>
-          <div id="vote-modal-container" style="display: none;">
-            <div id="vote-modal-content" class="modal-content">
-              <h3 id="vote-modal-player-name" class="title title--content"></h3>
-              <p class="caption-text">ウルフだと思うプレイヤーに<br>投票してください</p>
-              <ul id="vote-modal-options" class="item-list"></ul>
-              <button id="vote-modal-submit-btn" class="btn btn--primary" disabled>投票</button>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- 投票結果画面 -->
-      <section id="vote-result-screen" class="vote-result-screen screen">
-        <div class="screen__inner">
-          <h2 class="title title--section">投票結果</h2>
-          <div class="screen__content">
-            <div id="vote-result-accused-player" class="vote-result-screen__accused-player"></div>
-            <div class="vote-result-screen__item">
-              <div id="vote-result-success" class="color-panel color-panel--success" style="display: none;">
-                <span class="lead-text">指名成功</span>
-                <p class="vote-result-screen__wolf-player"></p>
-              </div>
-              <div id="vote-result-failure" class="color-panel color-panel--failure" style="display: none;">
-                <span class="lead-text">指名失敗</span>
-                <p class="vote-result-screen__wolf-player"></p>
-              </div>
-            </div>
-            <div class="content-item">
-              <h3 class="title title--content">投票履歴</h3>
-              <ul id="vote-result-volt-history-list" class="item-list"></ul>
-            </div>
-            <button id="wolf-chance-btn" class="btn btn--accent">ウルフ逆転チャンス</button>
-            <button id="game-result-btn-vote" class="btn btn--primary">ゲーム結果へ</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- 逆転チャンス画面 -->
-      <section id="wolf-chance-screen" class="wolf-chance-screen screen">
-        <div class="screen__inner">
-          <h2 class="title title--section">逆転チャンス</h2>
-          <form class="screen__content" onsubmit="return false;">
-            <p class="caption-text">ウルフは村人のワードを推測してください</p>
-            <div>
-              <label for="wolf-guess">推測するワード:</label>
-              <input type="text" id="wolf-guess" class="form-input" placeholder="ワードを入力" max="20" required>
-            </div>
-            <button id="submit-guess-btn" class="btn btn--primary" disabled>回答する</button>
-          </form>
-        </div>
-      </section>
-
-      <!-- 逆転チャンス結果画面 -->
-      <section id="wolf-chance-result-screen" class="wolf-chance-result-screen screen">
-        <div class="screen__inner">
-          <h2 class="title title--section">逆転チャンス結果</h2>
-          <div class="screen__content">
-            <h3 id="wolf-guess-display" class="title title--content"></h3>
-            <div class="wolf-chance-result-screen__result">
-              <div id="wolf-chance-result-success" class="color-panel color-panel--success" style="display: none;">
-                <span class="lead-text">正解</span>
-                <p class="wolf-chance-result-screen__villager-word"></p>
-              </div>
-              <div id="wolf-chance-result-failure" class="color-panel color-panel--failure" style="display: none;">
-                <span class="lead-text">不正解</span>
-                <p class="wolf-chance-result-screen__villager-word"></p>
-              </div>
-            </div>
-            <button id="game-result-btn-wolf-chance" class="btn btn--primary">ゲーム結果へ</button>
-            <div>
-              <button id="modify-result-btn" class="btn btn--secondary">結果の修正</button>
-              <p class="caption-text">表記揺れによる不正解を修正できます<br>例：りんご→リンゴなど</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ゲーム結果画面 -->
-      <section id="game-result-screen" class="game-result-screen screen">
-        <div class="screen__inner">
-          <h2 id="game-result-title" class="title title--section">ゲーム結果</h2>
-          <div class="screen__content">
-            <div class="game-result-screen__result">
-              <div id="game-result-villager" class="color-panel color-panel--success" style="display: none;">
-                <span class="lead-text">村人の勝利！</span>
-              </div>
-              <div id="game-result-wolf" class="color-panel color-panel--failure" style="display: none;">
-                <span class="lead-text">ウルフの勝利！</span>
-              </div>
-            </div>
-            <div class="content-item">
-              <h3 class="title title--content">スコアボード</h3>
-              <ul id="score-list" class="item-list"></ul>
-            </div>
-            <button id="next-game-btn" class="btn btn--primary">次のゲームへ</button>
-            <button id="end-game-btn" class="btn btn--secondary">ゲーム終了</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- 最終結果画面 -->
-      <section id="end-result-screen" class="end-result-screen screen">
-        <div class="screen__inner">
-          <h2 class="title title--section">最終結果</h2>
-          <div class="content-item">
-            <h3 class="title title--content">スコアボード</h3>
-            <ul id="end-result-score-list" class="item-list"></ul>
-          </div>
-          <button id="back-to-top-btn" class="btn btn--primary">トップ画面へ</button>
-        </div>
-      </section>
-
-      <!-- ヘルプ画面 -->
-      <section id="help-screen" class="help-screen">
-        <div class="help-screen__inner">
-          <div id="help-modal-container" style="display: none;">
-            <div id="help-modal-content" class="modal-content">
-              <h2 class="title title--section">ヘルプ</h2>
-              <div class="help-screen__modal-body">
-                <div class="help-screen__modal-body-item">
-                  <h3 class="title title--content">ワードウルフとは？</h3>
-                  <p>
-                    ワードウルフとは、プレイヤー同士で会話をしながら、「異なるお題を持っている人（=ワードウルフ）」を見つけ出す推理ゲームです。各プレイヤーには1つずつお題（ワード）が与えられますが、そのうち1人だけ、他のプレイヤーとは異なるワードが配られます。誰がワードウルフなのかを、会話を通して見抜きましょう。
-                  </p>
+        <!-- 討論画面 -->
+        <section class="p-discussion l-screen js-discussion js-screen">
+          <div class="l-screen__inner">
+            <h2 class="c-title c-title--section">討論タイム</h2>
+            <div class="l-screen__content">
+              <div class="c-item">
+                <div class="p-discussion__timer js-discussion-timer"></div>
+                <div class="p-discussion__timer-controls">
+                  <button class="p-discussion__timer-button c-button js-discussion-timer-start-button">討論開始</button>
+                  <button class="p-discussion__timer-button c-button c-button--secondary js-discussion-timer-pause-button" style="display: none">一時停止</button>
+                  <button class="p-discussion__timer-button c-button js-discussion-timer-resume-button" style="display: none">再開</button>
+                  <button class="p-discussion__timer-button c-button c-button--accent js-discussion-end-button" style="display: none">討論終了</button>
                 </div>
-                <div class="help-screen__modal-body-item">
-                  <h3 class="title title--content">遊び方</h3>
-                  <div>
-                    <h4 class="help-screen__modal-step-title">① ゲーム設定</h4>
-                    <ul>
-                      <li>・ゲームモードの選択 ※下記詳細</li>
-                      <li>・プレイヤー人数の入力</li>
-                      <li>・プレイヤー名の入力</li>
-                      <li>・討論時間の設定</li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 class="help-screen__modal-step-title">② ワードの設定 ※家畜モードのみ</h4>
-                    <p>マスターが「村人ワード」と「ウルフワード」の2つを設定します。全体の会話バランスが崩れないよう、似た内容で設定するのがコツです。</p>
-                  </div>
-                  <div>
-                    <h4 class="help-screen__modal-step-title">③ ワードの確認</h4>
-                    <p>プレイヤー全員にそれぞれのお題が順番に表示されます。1人だけには「ウルフワード」が配られ、他のプレイヤーには「村人ワード」が配られます。</p>
-                  </div>
-                  <div>
-                    <h4 class="help-screen__modal-step-title">④ 討論タイム</h4>
-                    <p>設定された時間内で、お題に関する自由な会話を行います。お題を直接口にしたり、明確に連想できる発言は避けましょう。</p>
-                  </div>
-                  <div>
-                    <h4 class="help-screen__modal-step-title">⑤ 投票</h4>
-                    <p>討論終了後、ウルフだと思うプレイヤーに、プレイヤーが順番に投票します。</p>
-                  </div>
-                  <div>
-                    <h4 class="help-screen__modal-step-title">⑥ 投票結果</h4>
-                    <p>最も票を集めたプレイヤーがウルフだった場合、村人の勝利です。ウルフではなかった場合は、ウルフの勝利となりますが...
-                      <br>
-                      <strong>ウルフ側には逆転チャンスがあります。</strong>
-                      ウルフが「村人側のワード」を正しく推理できた場合、逆転勝利となります。
-                    </p>
-                  </div>
-                </div>
-                <div class="help-screen__modal-body-item">
-                  <h3 class="title title--content">スコアの計算</h3>
-                  <div>
-                    <h4 class="help-screen__modal-step-title">ウルフを指名成功+逆転チャンス失敗</h4>
-                    <p>ウルフに投票した村人に+1点</p>
-                  </div>
-                  <div>
-                    <h4 class="help-screen__modal-step-title">ウルフを指名成功+逆転チャンス成功</h4>
-                    <p>ウルフに+1点</p>
-                  </div>
-                  <div>
-                    <h4 class="help-screen__modal-step-title">ウルフを指名失敗</h4>
-                    <p>ウルフに+1点</p>
-                  </div>
-                </div>
-                <div class="help-screen__modal-body-item">
-                  <h3 class="title title--content">モードについて</h3>
-                  <div>
-                    <h4 class="help-screen__modal-step-title">家畜モード（Tamed Mode）</h4>
-                    <p>ラウンドごとに1人のマスターが順番に選ばれ、お題を設定します。他のプレイヤーはそのお題でワードウルフをプレイします。マスターは議論には参加せず、観察者として進行を楽しめます。</p>
-                    <p>プレイ人数：4～8人</p>
-                  </div>
-                  <div>
-                    <h4 class="help-screen__modal-step-title">野生モード（Wild Mode）</h4>
-                    <p>全員がプレイヤーとしてゲームに参加し、お題は自動でランダムに選ばれます。よりカジュアルにテンポよく遊びたいときにおすすめのモードです。</p>
-                    <p>プレイ人数：3～7人</p>
-                  </div>
-                </div>
-                <div class="help-screen__modal-body-item help-screen__modal-body-item--author">
-                  <h3 class="title title--content">制作者</h3>
-                  <div>
-                    <h4 class="help-screen__modal-step-title">Webクリエイター｜DY</h4>
-                    <a href="https://workalone.jp/" target="_blank">https://workalone.jp/</a>
-                  </div>
-                  <strong>Thanks for Playing!</strong>
+                <audio class="js-discussion-timer-sound" src="assets/audio/wolf_howl_alert.mp3" preload="auto" muted></audio>
+              </div>
+              <div class="c-item">
+                <h3 class="c-title c-title--content js-discussion-master-player"></h3>
+                <ul class="c-item-list js-discussion-players-list"></ul>
+                <p class="c-text-caption">プレイヤー名をクリックすることで<br />そのプレイヤーのワードを表示</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 投票画面 -->
+        <section class="p-vote l-screen js-vote js-screen">
+          <div class="l-screen__inner">
+            <h2 class="c-title c-title--section">投票</h2>
+            <div class="l-screen__content">
+              <button class="c-button js-vote-start-button">投票開始</button>
+              <button class="c-button c-button--accent js-vote-result-button" style="display: none">投票結果へ</button>
+              <button class="c-button c-button--secondary js-vote-continue-discussion-button">再討論</button>
+            </div>
+            <div class="l-modal-content js-vote-modal-content">
+              <div class="l-modal-body js-vote-modal-body">
+                <h3 class="c-title c-title--content js-vote-modal-player"></h3>
+                <p class="c-text-caption">ウルフだと思うプレイヤーに<br />投票してください</p>
+                <ul class="c-item-list js-vote-modal-options"></ul>
+                <button class="c-button js-vote-modal-submit-button" disabled>投票</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 投票結果画面 -->
+        <section class="p-vote-result l-screen js-vote-result js-screen">
+          <div class="l-screen__inner">
+            <h2 class="c-title c-title--section">投票結果</h2>
+            <div class="l-screen__content">
+              <div class="p-vote-result__accused-player js-vote-result-accused-player"></div>
+              <div class="js-vote-result-panel-success" style="display: none">
+                <div class="c-panel c-panel--success">
+                  <span class="c-panel__text">指名成功</span>
+                  <p class="js-vote-result-wolf-player"></p>
                 </div>
               </div>
-              <button id="close-help-btn" class="btn btn--secondary">閉じる</button>
+              <div class="js-vote-result-panel-failure" style="display: none">
+                <div class="c-panel c-panel--failure">
+                  <span class="c-panel__text">指名失敗</span>
+                  <p class="js-vote-result-wolf-player"></p>
+                </div>
+              </div>
+              <div class="c-item">
+                <h3 class="c-title c-title--content">投票履歴</h3>
+                <ul class="c-item-list js-vote-result-history-list"></ul>
+              </div>
+              <button class="c-button c-button--accent js-vote-result-wolf-chance-button">ウルフ逆転チャンス</button>
+              <button class="c-button js-vote-result-round-result-button">ゲーム結果へ</button>
             </div>
           </div>
-          <button id="show-help-btn" class="help-screen__btn">?</button>
-        </div>
-      </section>
+        </section>
 
-      <!-- モーダルウィンドウ -->
-      <div id="modal-window" class="modal-window">
-        <div id="modal-mask" class="modal-window__mask"></div>
-        <div id="round-count" class="modal-window__round-count"></div>
-        <div class="modal-window__container">
-          <div id="modal-window-content" class="modal-window__content"></div>
-        </div>
-      </div>
-    </main>
+        <!-- 逆転チャンス画面 -->
+        <section class="p-wolf-chance l-screen js-wolf-chance js-screen">
+          <div class="l-screen__inner">
+            <h2 class="c-title c-title--section">逆転チャンス</h2>
+            <form class="l-screen__content" onsubmit="return false;">
+              <p class="c-text-caption">ウルフは村人のワードを推測してください</p>
+              <div>
+                <label for="wolf-chance-guess">推測するワード:</label>
+                <input type="text" id="wolf-chance-guess" class="c-form-input js-wolf-chance-guess" placeholder="ワードを入力" max="20" required />
+              </div>
+              <button class="c-button js-wolf-chance-submit-button" disabled>回答する</button>
+            </form>
+          </div>
+        </section>
 
-    <footer id="footer" class="footer">
-      <div class="footer__inner">
-        <div class="footer__content">
-          <span class="footer__copyright">&copy; 2025 ワーカロン｜workalone</span>
-        </div>
-      </div>
-    </footer>
-  </div>
-  <script src="script.js"></script>
-</body>
+        <!-- 逆転チャンス結果画面 -->
+        <section class="p-wolf-chance-result l-screen js-wolf-chance-result js-screen">
+          <div class="l-screen__inner">
+            <h2 class="c-title c-title--section">逆転チャンス結果</h2>
+            <div class="l-screen__content">
+              <h3 class="c-title c-title--content js-wolf-chance-result-display"></h3>
+              <div class="js-wolf-chance-result-panel-success" style="display: none">
+                <div class="c-panel c-panel--success">
+                  <span class="c-panel__text">正解</span>
+                  <p class="js-wolf-chance-result-villager-word"></p>
+                </div>
+              </div>
+              <div class="js-wolf-chance-result-panel-failure" style="display: none">
+                <div class="c-panel c-panel--failure">
+                  <span class="c-panel__text">不正解</span>
+                  <p class="js-wolf-chance-result-villager-word"></p>
+                </div>
+              </div>
+              <button class="c-button js-wolf-chance-result-round-result-button">ゲーム結果へ</button>
+              <div class="p-wolf-chance-result__modify-button">
+                <button class="c-button c-button--secondary js-wolf-chance-result-modify-button">結果の修正</button>
+                <p class="c-text-caption">表記揺れによる不正解を修正できます<br />例：りんご→リンゴなど</p>
+              </div>
+            </div>
+          </div>
+        </section>
 
+        <!-- ラウンド結果画面 -->
+        <section class="p-round-result l-screen js-round-result js-screen">
+          <div class="l-screen__inner">
+            <h2 class="c-title c-title--section js-round-result-title">ゲーム結果</h2>
+            <div class="l-screen__content">
+              <div class="js-round-result-panel-success" style="display: none">
+                <div class="c-panel c-panel--success">
+                  <span class="c-panel__text">村人の勝利！</span>
+                </div>
+              </div>
+              <div class="js-round-result-panel-failure" style="display: none">
+                <div class="c-panel c-panel--failure">
+                  <span class="c-panel__text">ウルフの勝利！</span>
+                </div>
+              </div>
+              <div class="c-item">
+                <h3 class="c-title c-title--content">スコアボード</h3>
+                <ul class="c-item-list js-round-result-score-list"></ul>
+              </div>
+              <button class="c-button js-round-result-next-round-button">次のゲームへ</button>
+              <button class="c-button c-button--secondary js-round-result-game-result-button">ゲーム終了</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 最終結果画面 -->
+        <section class="p-game-result l-screen js-game-result js-screen">
+          <div class="l-screen__inner">
+            <h2 class="c-title c-title--section">最終結果</h2>
+            <div class="c-item">
+              <h3 class="c-title c-title--content">スコアボード</h3>
+              <ul class="c-item-list js-game-result-score-list"></ul>
+            </div>
+            <button class="c-button js-game-result-top-button">トップ画面へ</button>
+          </div>
+        </section>
+
+        <!-- ヘルプ画面 -->
+        <section class="p-help">
+          <div class="p-help__inner">
+            <div class="p-help__container">
+              <div class="l-modal-content js-help-modal-content">
+                <div class="l-modal-body js-help-modal-body">
+                  <h2 class="c-title c-title--section">ヘルプ</h2>
+                  <div class="p-help__modal-body">
+                    <div class="p-help__modal-body-item">
+                      <h3 class="c-title c-title--content">ワードウルフとは？</h3>
+                      <p>ワードウルフとは、プレイヤー同士で会話をしながら、「異なるお題を持っている人（=ワードウルフ）」を見つけ出す推理ゲームです。各プレイヤーには1つずつお題（ワード）が与えられますが、そのうち1人だけ、他のプレイヤーとは異なるワードが配られます。誰がワードウルフなのかを、会話を通して見抜きましょう。</p>
+                    </div>
+                    <div class="p-help__modal-body-item">
+                      <h3 class="c-title c-title--content">遊び方</h3>
+                      <div>
+                        <h4 class="p-help__modal-step-title">① ゲーム設定</h4>
+                        <ul>
+                          <li>・ゲームモードの選択 ※下記詳細</li>
+                          <li>・プレイヤー人数の入力</li>
+                          <li>・プレイヤー名の入力</li>
+                          <li>・討論時間の設定</li>
+                        </ul>
+                      </div>
+                      <div>
+                        <h4 class="p-help__modal-step-title">② ワードの設定 ※家畜モードのみ</h4>
+                        <p>マスターが「村人ワード」と「ウルフワード」の2つを設定します。全体の会話バランスが崩れないよう、似た内容で設定するのがコツです。</p>
+                      </div>
+                      <div>
+                        <h4 class="p-help__modal-step-title">③ ワードの確認</h4>
+                        <p>プレイヤー全員にそれぞれのお題が順番に表示されます。1人だけには「ウルフワード」が配られ、他のプレイヤーには「村人ワード」が配られます。</p>
+                      </div>
+                      <div>
+                        <h4 class="p-help__modal-step-title">④ 討論タイム</h4>
+                        <p>設定された時間内で、お題に関する自由な会話を行います。お題を直接口にしたり、明確に連想できる発言は避けましょう。</p>
+                      </div>
+                      <div>
+                        <h4 class="p-help__modal-step-title">⑤ 投票</h4>
+                        <p>討論終了後、ウルフだと思うプレイヤーに、プレイヤーが順番に投票します。</p>
+                      </div>
+                      <div>
+                        <h4 class="p-help__modal-step-title">⑥ 投票結果</h4>
+                        <p>
+                          最も票を集めたプレイヤーがウルフだった場合、村人の勝利です。ウルフではなかった場合は、ウルフの勝利となりますが...
+                          <br />
+                          <strong>ウルフ側には逆転チャンスがあります。</strong>
+                          ウルフが「村人側のワード」を正しく推理できた場合、逆転勝利となります。
+                        </p>
+                      </div>
+                    </div>
+                    <div class="p-help__modal-body-item">
+                      <h3 class="c-title c-title--content">スコアの計算</h3>
+                      <div>
+                        <h4 class="p-help__modal-step-title">ウルフを指名成功+逆転チャンス失敗</h4>
+                        <p>ウルフに投票した村人に+1点</p>
+                      </div>
+                      <div>
+                        <h4 class="p-help__modal-step-title">ウルフを指名成功+逆転チャンス成功</h4>
+                        <p>ウルフに+1点</p>
+                      </div>
+                      <div>
+                        <h4 class="p-help__modal-step-title">ウルフを指名失敗</h4>
+                        <p>ウルフに+1点</p>
+                      </div>
+                    </div>
+                    <div class="p-help__modal-body-item">
+                      <h3 class="c-title c-title--content">モードについて</h3>
+                      <div>
+                        <h4 class="p-help__modal-step-title">家畜モード（Tamed Mode）</h4>
+                        <p>ラウンドごとに1人のマスターが順番に選ばれ、お題を設定します。他のプレイヤーはそのお題でワードウルフをプレイします。マスターは議論には参加せず、観察者として進行を楽しめます。</p>
+                        <p>プレイ人数：4～8人</p>
+                      </div>
+                      <div>
+                        <h4 class="p-help__modal-step-title">野生モード（Wild Mode）</h4>
+                        <p>全員がプレイヤーとしてゲームに参加し、お題は自動でランダムに選ばれます。よりカジュアルにテンポよく遊びたいときにおすすめのモードです。</p>
+                        <p>プレイ人数：3～7人</p>
+                      </div>
+                    </div>
+                    <div class="p-help__modal-body-item p-help__modal-body-item--author">
+                      <h3 class="c-title c-title--content">制作者</h3>
+                      <div>
+                        <h4 class="p-help__modal-step-title">Webクリエイター｜DY</h4>
+                        <a href="https://workalone.jp/" target="_blank">https://workalone.jp/</a>
+                      </div>
+                      <strong>Thanks for Playing!</strong>
+                    </div>
+                  </div>
+                  <button class="c-button c-button--secondary js-help-modal-close-button">閉じる</button>
+                </div>
+              </div>
+              <button class="p-help__button js-help-modal-show-button">?</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- モーダルウィンドウ -->
+        <div class="p-modal-window">
+          <div class="p-modal-window__inner">
+            <div class="p-modal-window__mask js-modal-window-mask"></div>
+            <div class="p-modal-window__round-count js-modal-window-round-count"></div>
+            <div class="p-modal-window__container">
+              <div class="p-modal-window__content js-modal-window-content"></div>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer id="footer" class="l-footer">
+        <div class="l-footer__inner">
+          <div class="l-footer__content">
+            <span class="l-footer__copyright">&copy; 2025 ワーカロン｜workalone</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+  </body>
 </html>

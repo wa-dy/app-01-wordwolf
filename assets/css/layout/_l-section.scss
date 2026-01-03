@@ -1,0 +1,46 @@
+@use "./../foundation/_base.scss";
+
+.l-screen {
+  $duration: 1.4s;
+
+  display: none;
+  background-color: base.$color-background-1;
+  border-radius: base.$border-radius-screen;
+  padding: 64px 32px;
+  box-shadow: base.$shadow-high;
+
+  &.is-active {
+    flex: 1;
+    @include base.flex($justify: flex-start, $align: stretch, $direction: column);
+    animation: fadeIn-bottom $duration base.$ease-out-expo;
+    @keyframes fadeIn-bottom {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &__inner {
+    @include base.flex($justify: flex-start, $align: stretch, $direction: column);
+    gap: 32px;
+  }
+
+  &__content {
+    @include base.flex($justify: flex-start, $align: stretch, $direction: column);
+    gap: 24px;
+  }
+}
+
+.l-modal-content {
+  display: none;
+}
+.l-modal-body {
+  @include base.flex($justify: flex-start, $align: stretch, $direction: column);
+  gap: 24px;
+  height: 100%;
+}

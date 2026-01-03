@@ -1,0 +1,15 @@
+@use "./../foundation/_base.scss";
+
+.l-footer {
+  &__inner {
+    padding: 0 16px;
+  }
+
+  &__content {
+    @include base.flex($justify: flex-start, $align: center, $direction: column);
+  }
+
+  &__copyright {
+    font-size: base.$font-size-copyright;
+  }
+}

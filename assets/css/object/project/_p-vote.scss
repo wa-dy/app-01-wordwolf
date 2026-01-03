@@ -1,0 +1,23 @@
+@use "./../../foundation/_base.scss";
+
+.p-vote {
+  &__option-item {
+    $duration: 0.7s;
+
+    background-color: base.$color-background-item;
+    border-radius: base.$border-radius-item;
+    padding: 12px;
+    cursor: pointer;
+    box-shadow: base.$shadow-low;
+    font-weight: 700;
+    transition-property: background-color, color, box-shadow;
+    transition-duration: $duration;
+    transition-timing-function: base.$ease-out-expo;
+
+    &.is-active {
+      background: base.$color-accent-1;
+      color: base.$color-text-4;
+      box-shadow: base.$shadow-high;
+    }
+  }
+}

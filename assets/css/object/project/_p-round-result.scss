@@ -1,0 +1,41 @@
+@use "./../../foundation/_base.scss";
+
+.p-round-result {
+  &__score-item {
+    position: relative;
+    padding: 8px 12px;
+    border-radius: base.$border-radius-item;
+    background-color: base.$color-background-item;
+    font-weight: 700;
+    box-shadow: base.$shadow-low;
+  }
+  &__score-player {
+    @include base.flex($justify: space-between, $align: center, $direction: row);
+  }
+  &__score-word {
+    text-align: center;
+    border-radius: base.$border-radius-sub-item;
+    padding: 4px 8px;
+    font-weight: 700;
+    font-size: base.$font-size-score-text-s;
+
+    &--wolf {
+      background: base.$color-accent-2;
+      color: base.$color-accent-1;
+    }
+    &--villager {
+      background: base.$color-primary-2;
+      color: base.$color-primary-1;
+    }
+    &--master {
+      background: base.$color-subtle-2;
+      color: base.$color-subtle-1;
+    }
+  }
+  &__score-win-icon {
+    @include base.position-abs($top: 4px, $bottom: auto, $right: 48px, $left: auto);
+    color: rgba(base.$color-accent-1, 0.8);
+    font-weight: 700;
+    text-shadow: base.$shadow-high;
+  }
+}

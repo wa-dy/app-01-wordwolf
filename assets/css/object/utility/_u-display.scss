@@ -1,0 +1,36 @@
+@use "./../../foundation/_base.scss";
+
+.u-hide-xl {
+  @include base.breakpoint(xl) {
+    display: none;
+  }
+}
+.u-hide-lg {
+  @include base.breakpoint(lg) {
+    display: none;
+  }
+}
+.u-hide-md {
+  @include base.breakpoint(md) {
+    display: none;
+  }
+}
+
+.u-show-xl {
+  display: none;
+  @include base.breakpoint(xl) {
+    display: revert;
+  }
+}
+.u-show-lg {
+  display: none;
+  @include base.breakpoint(lg) {
+    display: revert;
+  }
+}
+.u-show-md {
+  display: none;
+  @include base.breakpoint(md) {
+    display: revert;
+  }
+}

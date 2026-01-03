@@ -1,0 +1,37 @@
+@use "./../../foundation/_base.scss";
+
+.c-form-input {
+  $duration: 1s;
+
+  width: 100%;
+  padding: 12px 16px;
+  border: base.$border-item;
+  border-radius: base.$border-radius-item;
+  background-color: base.$color-background-item;
+  transition: border-color $duration base.$ease-out-expo;
+
+  &:focus {
+    border-color: base.$color-primary-1;
+  }
+
+  &::placeholder {
+    color: base.$color-text-3;
+  }
+}
+
+.c-form-error-text {
+  $duration: 1.4s;
+
+  font-size: base.$font-size-form-error;
+  font-weight: 700;
+  font-style: italic;
+  color: base.$color-accent-1;
+  text-align: center;
+  opacity: 0;
+  transition: opacity $duration base.$ease-out-expo;
+  user-select: none;
+
+  &.is-active {
+    opacity: 1;
+  }
+}

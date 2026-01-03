@@ -1,0 +1,18 @@
+@use "./../../foundation/_base.scss";
+
+.p-game-result {
+  &__score-item {
+    @include base.flex($justify: space-between, $align: center, $direction: row);
+    position: relative;
+    background-color: base.$color-background-item;
+    border-radius: base.$border-radius-item;
+    padding: 8px 12px;
+    font-weight: 700;
+    box-shadow: base.$shadow-low;
+  }
+  &__score-trophy-icon {
+    @include base.position-abs($top: -6px, $bottom: auto, $right: auto, $left: -18px);
+    font-size: base.$font-size-trophy-icon;
+    text-shadow: base.$shadow-high;
+  }
+}

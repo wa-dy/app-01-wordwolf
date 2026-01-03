@@ -1,0 +1,16 @@
+@use "./../foundation/_base.scss";
+
+.l-wrapper {
+  @include base.flex($justify: space-between, $align: stretch, $direction: column);
+  gap: 4px;
+  position: relative;
+  max-width: base.$max-width-screen;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 12px;
+}
+
+.l-main {
+  flex: 1;
+  @include base.flex($justify: flex-start, $align: stretch, $direction: column);
+}

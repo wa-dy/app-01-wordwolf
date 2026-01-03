@@ -1,0 +1,42 @@
+@use "./../../foundation/_base.scss";
+
+.c-button {
+  $duration: 1s;
+
+  cursor: pointer;
+  padding: 12px;
+  border-radius: base.$border-radius-item;
+  background-color: base.$color-primary-1;
+  font-size: base.$font-size-button;
+  font-weight: 700;
+  color: base.$color-text-4;
+  box-shadow: base.$shadow-low;
+  transition-property: background-color, transform, box-shadow, opacity;
+  transition-timing-function: base.$ease-out-expo;
+  transition-duration: $duration;
+  &:hover {
+    background-color: darken(base.$color-primary-1, 10%);
+    transform: scale(1.02);
+    box-shadow: base.$shadow-high;
+  }
+
+  &--secondary {
+    background-color: base.$color-subtle-1;
+    &:hover {
+      background-color: darken(base.$color-subtle-1, 10%);
+    }
+  }
+
+  &--accent {
+    background-color: base.$color-accent-1;
+    &:hover {
+      background-color: darken(base.$color-accent-1, 10%);
+    }
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    pointer-events: none;
+    box-shadow: none;
+  }
+}

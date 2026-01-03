@@ -1,0 +1,63 @@
+@use "./../../foundation/_base.scss";
+
+.p-discussion {
+  $duration: 1s;
+
+  &__timer {
+    font-family: base.$font-family-timer;
+    font-size: base.$font-size-timer;
+    font-weight: 700;
+    color: base.$color-accent-1;
+    text-align: center;
+    letter-spacing: 0.1em;
+  }
+  &__timer-controls {
+    @include base.flex($justify: flex-start, $align: flex-start, $direction: row);
+    gap: 12px;
+  }
+  &__timer-button {
+    flex: 1;
+  }
+
+  &__player-item {
+    background-color: base.$color-background-item;
+    border-radius: base.$border-radius-item;
+    padding: 12px;
+    cursor: pointer;
+    box-shadow: base.$shadow-low;
+  }
+  &__player-item-header {
+    @include base.flex($justify: space-between, $align: center, $direction: row);
+    font-weight: 700;
+  }
+  &__player-item-score {
+    background: base.$color-primary-1;
+    color: base.$color-text-4;
+    padding: 4px 8px;
+    border-radius: base.$border-radius-sub-item;
+    font-size: base.$font-size-score-point;
+    font-weight: 700;
+  }
+  &__player-item-word {
+    height: 0;
+    border-radius: base.$border-radius-sub-item;
+    background-color: base.$color-primary-2;
+    font-weight: 700;
+    color: base.$color-primary-1;
+    text-align: center;
+    overflow: hidden;
+    opacity: 0;
+    transition-property: opacity, margin, padding, height;
+    transition-duration: $duration;
+    transition-timing-function: base.$ease-out-expo;
+
+    &.is-active {
+      margin-top: 12px;
+      opacity: 1;
+    }
+  }
+  &__player-item-word-text {
+    display: block;
+    padding: 8px;
+  }
+}

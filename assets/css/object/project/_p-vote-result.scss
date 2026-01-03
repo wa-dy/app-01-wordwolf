@@ -1,0 +1,23 @@
+@use "./../../foundation/_base.scss";
+
+.p-vote-result {
+  &__accused-player {
+    font-size: base.$font-size-lead;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  &__history-item {
+    @include base.flex($justify: center, $align: center, $direction: row);
+    gap: 8px;
+    padding: 8px 12px;
+    background-color: base.$color-background-item;
+    border-radius: base.$border-radius-item;
+    font-weight: 700;
+    box-shadow: base.$shadow-low;
+  }
+
+  &__history-arrow {
+    color: base.$color-accent-1;
+  }
+}

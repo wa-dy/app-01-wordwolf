@@ -1,0 +1,35 @@
+//foundation
+@use "foundation/reset";
+@use "foundation/base";
+
+//layout
+@use "layout/l-header";
+@use "layout/l-main";
+@use "layout/l-footer";
+@use "layout/l-section";
+
+//object
+//component
+@use "object/component/c-title";
+@use "object/component/c-text";
+@use "object/component/c-button";
+@use "object/component/c-item";
+@use "object/component/c-form";
+@use "object/component/c-panel";
+
+//project
+
+@use "object/project/p-help";
+@use "object/project/p-setup";
+@use "object/project/p-word-distribution";
+@use "object/project/p-discussion";
+@use "object/project/p-vote";
+@use "object/project/p-vote-result";
+@use "object/project/p-wolf-chance-result";
+@use "object/project/p-round-result";
+@use "object/project/p-game-result";
+
+@use "object/project/p-modal-window";
+
+//utility
+@use "object/utility/u-display";

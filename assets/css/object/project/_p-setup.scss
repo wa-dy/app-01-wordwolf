@@ -1,0 +1,81 @@
+@use "./../../foundation/_base.scss";
+
+.p-setup {
+  $duration: 1s;
+  $height-selector: 48px;
+  $border-radius-selector: calc($height-selector / 2);
+
+  &__mode-selector {
+    @include base.flex($justify: flex-start, $align: stretch, $direction: row);
+    position: relative;
+    height: $height-selector;
+    border-radius: $border-radius-selector;
+    background-color: base.$color-background-item;
+    border: base.$border-item;
+  }
+  &__mode-selector-label {
+    @include base.flex($justify: center, $align: center, $direction: column);
+    z-index: 1;
+    width: 50%;
+    cursor: pointer;
+    font-weight: 700;
+    color: base.$color-text-2;
+    -webkit-tap-highlight-color: transparent;
+    transition: color $duration base.$ease-out-expo;
+
+    &.is-active {
+      color: base.$color-text-4;
+    }
+  }
+  &__mode-selector-slider {
+    @include base.position-abs($top: 0, $bottom: 0, $right: auto, $left: 0);
+    width: 50%;
+    border-radius: $border-radius-selector;
+    transition-property: background-color, left, box-shadow;
+    transition-duration: $duration;
+    transition-timing-function: base.$ease-out-expo;
+
+    .is-tamed & {
+      background: base.$color-primary-1;
+      left: 0;
+      box-shadow: 1px 0 3px rgba(0, 0, 0, 0.12), 1px 0 2px rgba(0, 0, 0, 0.24);
+    }
+    .is-wild & {
+      background: base.$color-accent-1;
+      left: 50%;
+      box-shadow: -1px 0 3px rgba(0, 0, 0, 0.12), -1px 0 2px rgba(0, 0, 0, 0.24);
+    }
+  }
+
+  &__mode-description {
+    border-radius: base.$border-radius-item;
+    border: base.$border-item;
+    overflow: hidden;
+  }
+  &__mode-description-frame {
+    @include base.flex($justify: flex-start, $align: stretch, $direction: row);
+    transition: transform $duration base.$ease-out-expo;
+    .is-tamed & {
+      transform: translateX(0);
+    }
+    .is-wild & {
+      transform: translateX(-100%);
+    }
+  }
+  &__mode-description-item {
+    @include base.flex($justify: flex-start, $align: center, $direction: column);
+    gap: 8px;
+    flex-shrink: 0;
+    width: 100%;
+    padding: 12px 16px;
+
+    &--tamed {
+      background-color: base.$color-primary-2;
+      color: base.$color-primary-1;
+    }
+    &--wild {
+      background-color: base.$color-accent-2;
+      color: base.$color-accent-1;
+    }
+  }
+}

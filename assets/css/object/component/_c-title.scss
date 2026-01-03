@@ -1,0 +1,23 @@
+@use "./../../foundation/_base.scss";
+
+.c-title {
+  text-align: center;
+  font-weight: 700;
+
+  &--main {
+    font-family: base.$font-family-title;
+    font-size: base.$font-size-title-main;
+    color: base.$color-text-title;
+  }
+
+  &--section {
+    font-size: base.$font-size-title-section;
+  }
+
+  &--content {
+    font-size: base.$font-size-title-content;
+  }
+}
+
+
+

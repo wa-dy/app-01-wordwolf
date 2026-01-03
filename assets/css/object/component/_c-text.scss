@@ -1,0 +1,12 @@
+@use "./../../foundation/_base.scss";
+
+.c-text-caption {
+  text-align: center;
+  font-size: base.$font-size-caption;
+  font-style: italic;
+
+  &--accent {
+    font-weight: 700;
+    color: base.$color-accent-1;
+  }
+}

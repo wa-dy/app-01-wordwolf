@@ -1,0 +1,13 @@
+@use "./../../foundation/_base.scss";
+
+.c-item-list {
+  @include base.flex($justify: flex-start, $align: stretch, $direction: column);
+  gap: 12px;
+}
+
+.c-item {
+  @include base.flex($justify: flex-start, $align: stretch, $direction: column);
+  gap: 16px;
+  @include base.card-style();
+  box-shadow: base.$shadow-low;
+}

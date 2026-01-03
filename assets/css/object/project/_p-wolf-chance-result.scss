@@ -1,0 +1,8 @@
+@use "./../../foundation/_base.scss";
+
+.p-wolf-chance-result {
+  &__modify-button {
+    @include base.flex($justify: flex-start, $align: stretch, $direction: column);
+    gap: 8px;
+  }
+}

@@ -1,0 +1,22 @@
+@use "./../../foundation/_base.scss";
+
+.c-panel {
+  @include base.flex($justify: center, $align: center, $direction: column);
+  padding: 24px 16px;
+  border-radius: base.$border-radius-content;
+  font-weight: 700;
+  box-shadow: base.$shadow-high;
+
+  &--success {
+    background-color: base.$color-primary-2;
+    color: base.$color-primary-1;
+  }
+  &--failure {
+    background-color: base.$color-accent-2;
+    color: base.$color-accent-1;
+  }
+
+  &__text {
+    font-size: base.$font-size-panel;
+  }
+}
