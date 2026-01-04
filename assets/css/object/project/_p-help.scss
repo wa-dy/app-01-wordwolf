@@ -1,17 +1,11 @@
 @use "./../../foundation/_base.scss";
 
 .p-help {
-  $inset-help: 24px;
   @include base.position-fixed($top: 0, $bottom: 0, $right: 0, $left: 0);
 
   &__inner {
     @include base.position-abs($top: 0, $bottom: 0, $right: 0, $left: 0);
-  }
-  
-  &__container {
-    position: relative;
     max-width: base.$max-width-screen;
-    height: 100%;
     margin: 0 auto;
   }
 

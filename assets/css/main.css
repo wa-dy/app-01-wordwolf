@@ -555,11 +555,7 @@ ul {
   bottom: 0;
   right: 0;
   left: 0;
-}
-.p-help__container {
-  position: relative;
   max-width: 768px;
-  height: 100%;
   margin: 0 auto;
 }
 .p-help__modal-body {
@@ -903,6 +899,8 @@ ul {
   bottom: 0;
   right: 0;
   left: 0;
+  max-width: 768px;
+  margin: 0 auto;
 }
 .p-modal-window__mask {
   position: absolute;
@@ -917,12 +915,6 @@ ul {
 .is-modal .p-modal-window__mask, .is-round-count .p-modal-window__mask, .is-help .p-modal-window__mask {
   opacity: 1;
   pointer-events: auto;
-}
-.p-modal-window__container {
-  position: relative;
-  max-width: 768px;
-  height: 100%;
-  margin: 0 auto;
 }
 .p-modal-window__content {
   position: absolute;
