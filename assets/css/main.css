@@ -541,13 +541,20 @@ ul {
   font-size: 3.2rem;
 }
 
-.p-help__inner {
+.p-help {
   position: fixed;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
   pointer-events: none;
+}
+.p-help__inner {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 .p-help__container {
   position: relative;
@@ -581,8 +588,8 @@ ul {
 .p-help__button {
   position: absolute;
   top: auto;
-  bottom: 48px;
-  right: 24px;
+  bottom: 40px;
+  right: 16px;
   left: auto;
   z-index: 4;
   width: 48px;
@@ -881,7 +888,7 @@ ul {
   text-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
 }
 
-.p-modal-window__inner {
+.p-modal-window {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -889,6 +896,13 @@ ul {
   left: 0;
   pointer-events: none;
   z-index: 4;
+}
+.p-modal-window__inner {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
 }
 .p-modal-window__mask {
   position: absolute;

@@ -3,9 +3,11 @@
 .p-modal-window {
   $duration: 1.4s;
 
+  @include base.position-fixed($top: 0, $bottom: 0, $right: 0, $left: 0);
+  z-index: 4;
+
   &__inner {
-    @include base.position-fixed($top: 0, $bottom: 0, $right: 0, $left: 0);
-    z-index: 4;
+    @include base.position-abs($top: 0, $bottom: 0, $right: 0, $left: 0);
   }
 
   &__mask {

@@ -201,14 +201,14 @@ async function init() {
 // ===========================================
 
 function setupEventListeners() {
+  // トップページ
+  elements.topStartButton.addEventListener("click", startGame);
+  elements.topContinueButton.addEventListener("click", continueGame);
+
   // ヘルプ画面
   elements.helpModalShowButton.addEventListener("click", showHelpScreenModal);
   elements.helpModalCloseButton.addEventListener("click", closeHelpScreenModal);
   elements.modalWindowMask.addEventListener("click", maskClickToCloseHelp);
-
-  // トップページ
-  elements.topStartButton.addEventListener("click", startGame);
-  elements.topContinueButton.addEventListener("click", continueGame);
 
   // 設定画面
   elements.setupTotalPlayers.addEventListener("change", (e) => {

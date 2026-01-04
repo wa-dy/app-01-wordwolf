@@ -2,11 +2,12 @@
 
 .p-help {
   $inset-help: 24px;
+  @include base.position-fixed($top: 0, $bottom: 0, $right: 0, $left: 0);
 
   &__inner {
-    @include base.position-fixed($top: 0, $bottom: 0, $right: 0, $left: 0);
+    @include base.position-abs($top: 0, $bottom: 0, $right: 0, $left: 0);
   }
-
+  
   &__container {
     position: relative;
     max-width: base.$max-width-screen;
@@ -36,7 +37,7 @@
   &__button {
     $duration: 1s;
 
-    @include base.position-abs($top: auto, $bottom: 48px, $right: 24px, $left: auto);
+    @include base.position-abs($top: auto, $bottom: 40px, $right: 16px, $left: auto);
     z-index: 4;
     width: 48px;
     aspect-ratio: 1;
